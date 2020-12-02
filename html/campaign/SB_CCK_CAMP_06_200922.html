@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, user-scalable=no">
+
+    <meta name="keywords" content="사랑의 열매, 사회복지공동모금회" />
+    <meta name="description" content="" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <title>사회복지공동모금회 사랑의열매</title>
+    <link rel="stylesheet" href="../../common/css/ui.base.css">
+
+    <!-- style추가 200305 hsy -->
+    <!-- funding 200305 hsy -->
+    <style>
+        /*funding_추가(200305) hsy*/
+        .funding--section {
+            position: relative;
+            max-width: 700px;
+            margin: 0 auto;
+            box-sizing: border-box
+        }
+
+        .funding--section p {
+            line-height: 1.8em;
+        }
+
+        .funding--section p.Blod {
+            font-weight: 600;
+        }
+
+        .funding--title {
+            max-width: 60%;
+            padding-top: 40px;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        .funding--title p {
+            color: #000;
+            padding-top: 25px;
+        }
+
+        [class^="funding-Eicon-"] {
+            position: relative;
+            margin-bottom: 5px;
+            margin-right: 3px;
+            vertical-align: middle;
+            display: inline-block;
+            background-image: url("/common/img/contents/funding_icon.png");
+            background-repeat: no-repeat;
+            font-size: 0;
+            background-position-y: 0
+        }
+
+        .funding-Eicon-1 {
+            width: 24px;
+            height: 24px;
+            background-position-x: 0;
+        }
+
+        .funding-Eicon-2 {
+            width: 24px;
+            height: 24px;
+            background-position: 0px -24px;
+        }
+
+        .funding-Eicon-3 {
+            width: 24px;
+            height: 24px;
+            background-position: 0px -48px;
+        }
+
+        .funding--section ul li {
+            padding-top: 40px;
+            font-weight: 400;
+            font-size: 1.2em;
+        }
+
+        .funding--section .text_space {
+            padding-bottom: 16px;
+        }
+
+        .funding--section .text_b {
+            font-weight: 500;
+            color: black;
+        }
+
+        .funding--section ul li.funding-text {
+            max-width: 90%;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.2em;
+            line-height: 1.8;
+        }
+
+        .funding--section ul li.funding-text strong {
+            font-weight: 600;
+        }
+
+        .funding--section ul li.funding-text p {
+            padding-top: 25px;
+            font-size: 12px;
+        }
+
+        .funding--section ul li:last-child {
+            padding-bottom: 40px;
+        }
+
+        .funding--section ul li img {
+            width: 100%;
+        }
+
+        .funding--section ul .Camp__center {
+            text-align: center;
+        }
+
+
+        .funding--section ul .Camp__center p {
+            font-size: 16px;
+        }
+
+        .funding--section ul .Camp__center img {
+            max-width: 600px;
+        }
+
+        .funding--section .news {
+            font-size: 16px;
+        }
+
+        .funding--section .news ul {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .funding--section .news li:first-child {
+            padding: 10px 0;
+            margin: 0px;
+            border-bottom: none;
+            color: #000
+        }
+
+        .funding--section .news li:last-child {
+            padding: 10px 0;
+        }
+
+        .funding--section .news li {
+            padding: 10px 0;
+            border-bottom: 1px dashed gray;
+            color: #cb0802;
+        }
+
+        .funding--section .news li a {
+            color: #cb0802;
+        }
+
+        .funding--section .Camp_H_t {
+            text-decoration: none;
+            padding: 0;
+        }
+
+        .funding--section .Camp_H_t li {
+            display: inline-block;
+            max-width: 49%;
+        }
+
+        .funding--section .Camp_H_t li p {
+            text-align: center;
+            font-size: 18px;
+        }
+
+        /* funding_video-(200319추가) hsy */
+        .funding-v {
+            max-width: 700px;
+            margin-top: 40px;
+        }
+
+        .funding-v video {
+            width: 100%;
+            border: 0;
+        }
+
+        .funding-v video:focus {
+            outline: none;
+        }
+
+        .funding-v video[poster] {
+            width: 100%;
+        }
+
+
+
+        /* funding__thumbnail(2008) */
+
+        .funding__thumbnail {
+            position: relative;
+            display: block;
+            text-align: center;
+            background-color: #f6f6f6;
+            width: 100%;
+            margin: 24px 0;
+            padding-top: 16px
+        }
+
+        .funding__thumbnail h2 {
+            font-size: 22px;
+            font-weight: 500;
+            color: #111313
+        }
+
+        .funding__thumbnail p {
+            font-size: 15px;
+            font-weight: 500;
+            color: #6a6c6c
+        }
+
+        .funding__thumbnail i {
+            position: absolute;
+            right: 66px;
+            top: 70px;
+            font-size: 12px;
+            font-weight: 500;
+            color: #8d8f8f
+        }
+
+        .funding__thumbnail a {
+            color: #8d8f8f
+        }
+
+        .funding__thumbnail i span {
+            font-size: 11px;
+            line-height: 12px;
+            padding-left: 2px
+        }
+
+        .funding__thumbnail--boxs {
+            display: flex;
+            flex-wrap: wrap;
+            align-content: center;
+            justify-content: center;
+            padding: 24px 0
+        }
+
+        .funding__thumbnail--box {
+            display: flex;
+            cursor: pointer;
+        }
+
+        .funding__thumbnail--boxs .funding__thumbnail--box:nth-child(odd) {
+            margin-right: 42px
+        }
+
+        .funding__thumbnail--description {
+            position: relative;
+            padding: 32px 40px 20px 20px;
+            text-align: left;
+            line-height: 24px;
+            background-color: #fff;
+            letter-spacing: 18px;
+        }
+
+        .funding__thumbnail--description h4 {
+            font-size: 12px;
+            font-weight: 600;
+            color: #f93232
+        }
+
+        .funding__thumbnail--description p {
+            font-size: 14px;
+            color: #2d2d2d
+        }
+
+        .funding__thumbnail--description p:last-child {
+            position: absolute;
+            bottom: 46px;
+            font-size: 12px;
+            color: #6a6c6c
+        }
+
+
+
+        /* 200924 */
+        .Camp__half {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .Camp__half img {
+            max-width: 200px;
+        }
+
+        .Camp__half span {
+            display: block;
+            font-size: 24px;
+        }
+
+        .Camp__half strong {
+            max-width: 60%;
+            padding: 14px;
+            vertical-align: middle;
+            box-sizing: border-box;
+        }
+
+        /* responsive-m(600) */
+
+
+        /* funding_추가(200305) hsy 
+                
+                .funding--section ul li{padding-top:25px;}
+                .funding--section ul li:last-child{padding-bottom: 25px;}
+                .funding--section .funding--title{padding-top:25px;font-size:13px;}
+                .funding--section ul li.funding-text{ max-width:90%; font-size:13px; margin:0 auto; text-align: center;}
+                .funding--section ul li.funding-text strong{font-size: 13px }
+                .funding--section .Camp_H_t li {max-width: 100%;}*/
+
+        /* ui.responsive -->추가 
+            */
+    </style>
+    <!-- //funding 200305 hsy -->
+    <!-- style추가 200305 hsy -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="../../common/js/ui.global.js"></script>
+    <script src="../../common/js/ui.plugins.js"></script>
+    <script src="../../common/js/ui.common.js"></script>
+
+</head>
+
+<body>
+    <div class="base-skip" id="baseSkip"></div>
+    <div class="base-layer" id="baseLayer"></div>
+    <div class="base-wrap" id="baseWrap">
+        <header class="base-header" id="baseHeader"></header>
+        <div class="base-body type-sub" id="baseBody">
+            <div class="sub-visual visual00_03">
+                <div class="sub-title-area">
+                    <h2 class="heading-title-a">크라우드펀딩</h2>
+                    <p class="title-sub-txt">당신이 함께하는 응원! 크라우드 펀딩입니다. </p>
+                </div>
+            </div>
+            <div class="base-breadcrumbs" id="baseBreadcrumbs"></div>
+            <main class="base-main" id="baseMain">
+                <div class="contents-area">
+                    <div class="contents-hd">
+                        <h3><strong>진행중인 펀딩 </strong><span>당신이 함께하는 응원! 크라우드 펀딩입니다.</span></h3>
+                        <div class="contents-menu-nav">
+                            <button type="button" class="prev-menu">펀딩 신청하기</button>
+                            <button type="button" class="next-menu">종료된 펀딩</button>
+                        </div>
+                    </div>
+                    <div class="seo-box">
+
+
+                        <!-- 변경 200305 HSY -->
+                        <div class="end-funding-area">
+                            <div class="funding--section">
+                                <!--수정부분-->
+                                <ul>
+                                    <li><img src="../../common/img/contents/Camp/voice_top.jpg"></li>
+                                    <li>
+                                        <p>코로나를 예방하기 위해 필수적으로 착용하는 마스크.
+                                            하지만 이 마스크 때문에
+                                            <span class="text_b">청각장애를 가진 이웃</span>들은 새로운 불편함에 직면하게 되었습니다.
+                                        </p><br>
+                                        <p>
+                                            전국 장애인 중 청각언어장애를 가진 이웃은 약 15%로 결코 적지 않은 비중입니다.
+                                            이들은 대화하는 동안 상대방의 <span class="text_b">입 모양, 표정 등 비언어적인 표현</span>을 통해 대화 내용을
+                                            파악합니다.
+                                        </p>
+                                    </li>
+                                    <li class="Camp__center">
+                                        <img src="../../common/img/contents/Camp/voice_graph.jpg">
+                                    </li>
+                                    <li>
+                                        <p class="text_space">이중 다원이와 같은 청각장애 학생 수는 약 6,200명(보건복지부, 2018).
+                                            특히나 지속적인 언어재활치료를 통해 일상생활이 가능할 정도의 소통을 하는 상당수는 비장애학생들과 함께 일반 학교에서 생활을 하고
+                                            있습니다.
+                                        </p>
+                                        <p class="text_space">
+                                            언제나 들을 수 있었던 선생님의 수업이, 친구와의 대화가, 마스크로 인해 이제는 들리지 않는 소리가 되었습니다.<br>
+                                            그로 인해 청각장애를 가진 아이들은 기본권 중의 하나인 학습권을 보장받지 못해 수업에서 소외당하고 있습니다.
+                                        </p>
+                                    </li>
+                                    <li class="Camp__center">
+                                        <p style="font-size:24px;"><span class="text_b">“영수증 드릴까요?”</span><br>
+                                            <span class="text_b">“교통카드 한 번 더 찍어주세요”</span> </p>
+                                    </li>
+                                    <li>
+                                        <p class="text_space">입모양이 보이는 투명 마스크 착용의 필요성은 교실에서뿐만 아니라
+                                            마트에서, 버스에서 오가는 대화 속에서도 나타납니다. </p>
+                                    </li>
+                                    <li class="Camp__center">
+                                        <img src="../../common/img/contents/Camp/voice_mask.jpg">
+                                        <p>(투명마스크 이미지_예시)</p>
+                                    </li>
+                                    <li>
+                                        <p class="text_space">많은 곳에서 투명마스크를 지원하고 있지만 여전히 그 수요를 충족시키지는 못하고 있는 상황. 주변에서
+                                            구매처를 찾기가 쉽지 않고, 찾을 수 있다고 해도 부담스러운 가격 때문입니다. </p>
+                                        <p class="text_space">그래서 사랑의열매와 사랑의달팽이가 여러분들의 마음을 모아
+                                            <span class="text_b">청각장애 학생들에게 투명마스크를 전달</span>하고자 합니다. </p>
+                                    </li>
+                                    <li>
+                                        <img src="../../common/img/contents/Camp/voice_mask3.jpg">
+                                    </li>
+                                    <li>
+                                        <img src="../../common/img/contents/Camp/voice_mask2.png">
+                                    </li>
+                                    <li>
+                                        <p class="text_space">그들이 투명마스크를 통해 이전처럼 세상과 원활히 소통할 수 있도록
+                                            <span class="text_b">여러분의 목소리를 보여주세요.</span></p>
+                                    </li>
+                                    <li><img src="../../common/img/contents/Camp/reward_bracelet.png" /></li>
+                                </ul>
+                                <!--수정부분-->
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <footer class="base-footer" id="baseFooter"></footer>
+        <!-- <div class="box-wing" id="rightWing"></div> -->
+    </div>
+
+    <script>
+        (function ($, win, doc, undefined) {
+            $(doc).ready(function () {
+
+                //필수실행
+                //메뉴는 00 부터 시작
+                $plugins.common.init({
+                    menuid: '00_01_01' //1depth_2depth_3depth
+                });
+
+                $('#directDebitAddCert input').on('change', function () {
+                    $('#directDebitAddCert .addcert').hide();
+                    $('#directDebitAddCert .addcert.n' + $(this).val()).show();
+                });
+
+            });
+        })(jQuery, window, document);
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+</div>
