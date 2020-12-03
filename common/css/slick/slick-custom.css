@@ -783,7 +783,11 @@
             color: #fff;
             font-size: 5em;
             font-weight: 100;
-            transition: .3s ease-in-out;
+            transition: .1s ease-in-out;
+        }
+
+        .quick_action span i{
+            display: none;
         }
 
         .quick_action span:before{
@@ -795,9 +799,8 @@
             transform: translate(-50%, -50%);
             width: 55px;
             height:51px;
-            background-image: url('../../common/img/re_main_2010/quick_M_icon.png');
+            background:url('../../img/re_main_2010/quick_M_icon.png');
             background-size: 100% auto;
-            border: 1px solid #000;
         }
         
         .quick_action.quick_active span {
@@ -806,6 +809,15 @@
             z-index: 10;
             font-weight: 100;
             color: black;
+        }
+        .quick_action.quick_active span:before{
+            display: none;
+        }
+
+        
+
+        .quick_action.quick_active span i{
+            display: block;
         }
         
         .quick_action ul {
