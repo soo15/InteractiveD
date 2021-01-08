@@ -22,3 +22,8 @@ const address = '';
 if (address) {
   console.log(`당신은 ${address}에 살고 계시네요.`);
 }
+
+//진리값 !
+console.log('진리값!')
+const flg = 'javascript'.includes('a');
+console.log(!flg);
