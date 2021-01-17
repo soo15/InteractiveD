@@ -21,3 +21,15 @@
 
 // Navigator
 // https://developer.mozilla.org/en-US/docs/Web/API/Navigator
+
+
+
+// CSS Gradient
+
+// https://cssgradient.io/
+
+// Box Shadow CSS Generator
+
+// https://www.cssmatic.com/box-shadow
+
+//https://color.adobe.com/ko/create/color-wheel
