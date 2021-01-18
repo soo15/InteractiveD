@@ -9,8 +9,7 @@ btn.addEventListener('click', () => {
     const blob = await res.blob();
 
     // img 요소 생성
-    const image = new Image();
-    // blob을 src 속성에 대입
+8    // blob을 src 속성에 대입
     image.src = URL.createObjectURL(blob);
     // 화면에 표시
     document.querySelector('#log').appendChild(image);
