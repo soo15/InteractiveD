@@ -33,3 +33,15 @@
 // https://www.cssmatic.com/box-shadow
 
 //https://color.adobe.com/ko/create/color-wheel
+
+
+
+// Events 개념
+// https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events
+
+// Events 종류
+// https://developer.mozilla.org/en-US/docs/Web/Events
+
+
+// Bubbling and Capturing 
+// https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#Event_bubbling_and_capture
