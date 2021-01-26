@@ -12,7 +12,7 @@ const gameScore = document.querySelector('.game__score');
 
 let started = false;
 let score = 0;
-let timer = undifined;
+let timer = undefined;
 
 
 gameBtn.addEventListener('click', ()=> {
@@ -38,7 +38,7 @@ function stoptGame(){
 function showStopButton(){
     const icon = gameBtn.querySelector('.fa-play');
     icon.classList.add('fa-stop');
-    icon.classList.remove('fa-play' );
+    icon.classList.remove('fa-play');
 }
 
 function showTimerAndScore(){
