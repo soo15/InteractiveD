@@ -1,5 +1,11 @@
 //즉시함수호출
 (()=>{
+
+	let yOffset = 0;
+	let prevScrollHeight = 0;
+	let currentScene = 0;
+
+
 	//전역변수사용을 피하려고..즉시함수사용
 	const sceneInfo = [
 		{
@@ -30,8 +36,7 @@
 			}
 		},
 		{
-			//3 
-			type : 'sticky',
+			//3 \';
 			heightNum: 5,
 			scrollHeight: 0,
 			objs:{
@@ -46,6 +51,33 @@
 			sceneInfo[i].objs.container.style.height = `${sceneInfo[i].scrollHeight}px`;
 		}
 	}
+
+	
+	function scrollLoop(){
+		//현재 몇픿셀 스크롤 했는지 확인
+		//console.log(yOffset);
+
+		prevScrollHeight = 0;
+		for(let i=0; i < currentScene.length; i++){
+			prevScrollHeight += sceneInfo[i].scrollHeight;
+		}
+
+		if(yOffset > prevScrollHeight + sceneInfo[currentScene].scrollHeight){
+			currentScene++
+		}
+
+		if(yOffset < prevScrollHeight){
+			currentScene--;
+		}
+		
+
+	}
+
 	window.addEventListener('resize', setLayout);
+	window.addEventListener('scroll', ()=> {
+		yOffset = window.pageYOffset;
+		scrollLoop();
+	});
+
 	setLayout();
 })();
