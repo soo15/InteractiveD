@@ -67,9 +67,10 @@
 		}
 
 		if(yOffset < prevScrollHeight){
+			if(currentScene === 0) return;
 			currentScene--;
 		}
-		
+
 
 	}
 
