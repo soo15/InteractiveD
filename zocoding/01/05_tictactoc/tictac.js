@@ -6,7 +6,7 @@ for(var i = 1; i <= 3; i += 1){
     칸들.push([]);
     for(var j = 1; j <= 3; j += 1){
         var 칸 = document.createElement('td');
-        칸들[i].push(칸);
+        칸들[i-1].push(칸);
         줄.appendChild(칸);
     }
     테이블.appendChild(줄);
