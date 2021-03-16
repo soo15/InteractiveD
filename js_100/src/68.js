@@ -11,7 +11,7 @@ function solution(버스시간, 기준시간){
   
     for (let i in 버스시간){
       let time = 버스시간[i].split(':').map(n => parseInt(n, 10));
-      time = (time[0] * 60) + time[1];
+      time = (time[0] * 60) + time[1];ㅋ
   
       if (time < 기준시간){
         answer.push('지나갔습니다');
