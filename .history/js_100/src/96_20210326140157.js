@@ -16,4 +16,4 @@ function f(n){
     }
 }
 
-console.log(f(6));
+console.log(f(2));
