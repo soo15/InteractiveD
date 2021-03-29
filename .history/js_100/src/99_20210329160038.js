@@ -23,8 +23,9 @@ function doong(r, j){
                 answer[i] = "fail";
             }
         }
+        
     }
-     return answer;
+        return answer;
 }
 
 

@@ -20,11 +20,11 @@ function doong(r, j){
             r[p-1] -= 1;
 
             if (r[p-1] < 0){
-                answer[i] = "fail";
-            }
+                          answer[i] = "fail";
+                        }
         }
+        
     }
-     return answer;
 }
 
 

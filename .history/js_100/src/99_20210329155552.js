@@ -14,17 +14,9 @@ function doong(r, j){
 
     for(let i =0; i<j.length; i++){
         let p =0;
-        console.log(r.length);
-        while(p < r.length-1){
-            p += j[i];
-            r[p-1] -= 1;
-
-            if (r[p-1] < 0){
-                answer[i] = "fail";
-            }
-        }
+        console.log(r.length-1);
+        // while(p < r.length-1)
     }
-     return answer;
 }
 
 

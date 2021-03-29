@@ -18,13 +18,9 @@ function doong(r, j){
         while(p < r.length-1){
             p += j[i];
             r[p-1] -= 1;
-
-            if (r[p-1] < 0){
-                answer[i] = "fail";
-            }
         }
+        
     }
-     return answer;
 }
 
 
