@@ -1,4 +1,3 @@
-//퍼즐맞추기
 function solution(plate, moves){
     //꺼낸공들넣기
   let stack = [0];

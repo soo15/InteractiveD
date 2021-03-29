@@ -20,6 +20,7 @@ function doong(r, j){
         }
       }
     }
+    let 내구도 감소 = JSON.parse(JSON.stringify(내구도));
     return answer;
   }
 

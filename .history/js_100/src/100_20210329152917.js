@@ -1,4 +1,3 @@
-//퍼즐맞추기
 function solution(plate, moves){
     //꺼낸공들넣기
   let stack = [0];
@@ -23,7 +22,7 @@ function solution(plate, moves){
           point -= 1;
         }
       }
-      //깊은복사확인
+
       let k = JSON.parse(JSON.stringify(moves));
       let s = JSON.parse(JSON.stringify(stack));
       let p = JSON.parse(JSON.stringify(point));

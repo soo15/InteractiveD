@@ -20,7 +20,6 @@ function doong(r, j){
         }
       }
     }
+  
     return answer;
   }
-
-  console.log(doong(돌의내구도, 토끼의점프력));

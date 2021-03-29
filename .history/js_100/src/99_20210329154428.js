@@ -20,6 +20,7 @@ function doong(r, j){
         }
       }
     }
+  
     return answer;
   }
 

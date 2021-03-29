@@ -19,6 +19,8 @@ function doong(r, j){
           answer[i] = "fail";
         }
       }
+      let 내구도 감소 = JSON.parse(JSON.stringify(돌의내구도));
+      console.log(내구도 감소)
     }
     return answer;
   }
