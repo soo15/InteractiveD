@@ -12,9 +12,11 @@ function solution(i){
         }
     }
     
+    // console.log(idx);
     let answer = [];
 
     for(let i of idx){
+        console.log(i);
         for(let j of i){
             if(!answer.includes(j)){
                 answer.push(j);

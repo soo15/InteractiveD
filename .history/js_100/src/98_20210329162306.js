@@ -12,6 +12,7 @@ function solution(i){
         }
     }
     
+    // console.log(idx);
     let answer = [];
 
     for(let i of idx){

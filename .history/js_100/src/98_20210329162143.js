@@ -11,7 +11,7 @@ function solution(i){
             idx[i][j] = parseInt(idx[i][j], 10);
         }
     }
-    
+
     let answer = [];
 
     for(let i of idx){
