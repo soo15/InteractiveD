@@ -27,6 +27,7 @@ let student_one = 0;
 let 일등 = 0;
 
 
+
 for (let c of total_score) {
   // console.log(c);
   for (let s of c) {

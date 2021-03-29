@@ -8,7 +8,6 @@ for (let k = 0; k < 7; k++) {
     //초기화
     student_score = [];
     for (let i = 0; i < 5; i++) {
-      //Math.random() * 100  0~99값이 나옴
       student_score.push(Math.floor(Math.random() * 100) + 1);
     }
     class_score.push(student_score);
@@ -25,7 +24,6 @@ let s_sum = 0;
 let c_sum = 0;
 let student_one = 0;
 let 일등 = 0;
-
 
 for (let c of total_score) {
   // console.log(c);
