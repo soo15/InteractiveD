@@ -1,20 +1,16 @@
 //STEMP ROTATE
 //i,j -> j, N-1-i
 
-// let N = 4;
+let N = 4;
+let 도장 = [
+    [1,1,1,2],
+    [2,0,0,0],
+    [1,1,1,1],
+    [0,0,0,0]]
 
-// // let stmp = [];
-// let stmp = [
-//   [1,1,1,2],
-//   [2,0,0,0],
-//   [1,1,1,1],
-//   [0,0,0,0]];
-// // for (let i = 0; i < N; i++){
-// //   let tmp = prompt('도장을 입력하세요').split(' ').map(x => parseInt(x, 10));
-// //   stmp.push(tmp);
-// // }
+//회전횟수
+const k = 1;
 
-// const k = 1;
 function solution(stmp,n) {
     N = stmp.length;
     // 0으로 만들어진 배열 생성

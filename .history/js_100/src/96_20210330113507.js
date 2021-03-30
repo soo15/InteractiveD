@@ -3,9 +3,9 @@
 
 
 /*
-재귀함수:중복의 가능성이 있으며, 탑다운 방식
-Memorization: 탑다운 방식
-Dp: 버텀업. 중복허용안됨
+재귀함수
+Memorization
+Dp
 */
 
 
@@ -54,21 +54,14 @@ Dp: 버텀업. 중복허용안됨
 // }
 
 //버텀업..다이나믹
-// let answer = [];
-// answer[1] = 1;
-// answer[2] = 1;
-// for(let i=3; i < 8; i++){
-//     answer[i]= answer[i -2] + answer[i -1];
-// }
-// console.log(answer);
+let answer = [];
+answer[1] = 1;
+answer[2] = 1;
+for(let i=3; i < 8; i++){
+    answer[i]= answer[i -2] + answer[i -1];
+}
+console.log(answer);
 
 
 // console.log(factorial(5));
 
-
-
-let 텃밭 = `0 0 0 0 0
-0 1 0 0 0
-0 1 0 0 0
-0 0 1 0 0
-0 0 0 1 0`.replace(/1/g, '!').replace(/0/g, '1').replace(/!/g, '0');

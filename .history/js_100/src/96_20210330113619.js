@@ -65,10 +65,3 @@ Dp: 버텀업. 중복허용안됨
 
 // console.log(factorial(5));
 
-
-
-let 텃밭 = `0 0 0 0 0
-0 1 0 0 0
-0 1 0 0 0
-0 0 1 0 0
-0 0 0 1 0`.replace(/1/g, '!').replace(/0/g, '1').replace(/!/g, '0');
