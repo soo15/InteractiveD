@@ -1,5 +1,4 @@
-// const num = 2;
-const num = 3;
+const num = 2;
 
 if(num % 3 === 0){
     console.log('짝')
