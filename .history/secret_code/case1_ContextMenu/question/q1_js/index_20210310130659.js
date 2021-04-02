@@ -33,7 +33,6 @@
 //     if(e.targetElem.classList.contains('context')) return;
 //     items.forEach(cont => {
 //         cont.classList.remove('open');
-        
 //     })
 
 // })
