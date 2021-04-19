@@ -16,8 +16,8 @@ window.addEventListener("scroll", (e) => {
     offsetTops.findIndex(([from, to]) => scrollTop >= from && scrollTop <= to), 0
   );
   Array.from(navElem.children).forEach((c, i) => {
-  c.classList[i === targetIndex ? "add" : "remove"]("on");
-  });  
+  c.classList[i === targetInde[ ? "add" : "remove"]("on");
+});  
 });
 
 //상단버튼을 누르면 스무스하게 이동

@@ -11,16 +11,9 @@ const offsetTops = contentItems.map((elem) => {
 window.addEventListener("scroll", (e) => {
   const { scrollTop } = e.target.scrollingElement;
   // do something
-
-  const targetIndex = Math.max(
-    offsetTops.findIndex(([from, to]) => scrollTop >= from && scrollTop <= to), 0
-  );
-  Array.from(navElem.children).forEach((c, i) => {
-  c.classList[i === targetIndex ? "add" : "remove"]("on");
-  });  
+  
 });
 
-//상단버튼을 누르면 스무스하게 이동
 navElem.addEventListener("click", (e) => {
   const targetElem = e.target;
   if (targetElem.tagName === "BUTTON") {
