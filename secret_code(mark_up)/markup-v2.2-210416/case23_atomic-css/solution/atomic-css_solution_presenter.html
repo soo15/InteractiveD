@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Case23 : atomic CSS - 출제자 해설코드</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css"
+    />
+    <style>
+      /*
+      ==================== html => MD 작업 시, 꼭! 확인해주세요. ====================
+      1. Markdown All in One : Print current document to HTML 실행. (VScode extension)
+      2. 생성된 README.html에서 body 태그 안에 있는것들을 복사
+      3. README_OOO.html 로 파일명 수정 (OOO => Case 이름)
+      4. ! 자동완성을 통해 기본 html 폼을 만들고, body태그 안에 <2>의 내용 붙여넣기
+      5. font / code style에 관련된 <link>세줄과 <style> 태그 안에 있는 내용 붙여넣기
+      6. 상단 <title> 태그 안에 <h2> 텍스트 삽입
+      7. <code> tag가 줄바꿈 될 때, class명으로 "code-inlineBlock" 넣어주기
+      8. <img>태그 경로 변경해주기
+      [ EXAMPLE ]
+      [ 변경 전 ] : 절대경로로 되어있음
+      <img
+          width="600px"
+          src="file:////Users/ming/Desktop/ui-component/case2_InfiniteScroll/example_image.gif"
+        />
+      [ 변경 후 ] : 상대경로로 수정
+      <img
+          width="600px"
+          src="./example_image.gif"
+        />
+      8. html 내에 <h3>실행 방법 및 의존성 모듈 설치</h3> 하위 내용 아래와 같이 수정
+      [ EXAMPLE ]
+      [ 변경 전 ] : p에 className 없음
+        <p>
+          <strong>q1</strong>
+          경로
+          <code>./question/q1_js</code>
+          index.html 열기
+        </p>
+      [ 변경 후 ] : p에 className 있음
+        <p>
+          <strong>q1</strong>
+          경로
+          <code>./question/q1_js</code>
+          <p class="excute-text">index.html 열기</p>
+        </p>
+
+
+      [ 변경 전 ] : p태그와 pre태그가 div로 감싸져있지 않음
+        <p>
+          <strong>q4</strong>
+          경로
+          <code>./question/q4_react.js</code>
+        </p>
+
+        <p>터미널</p>
+        <pre><code class="language-bash"><div>  $ npm install
+        $ npm start
+      </div></code></pre>
+
+      [ 변경 후 ] : p태그와 pre태그가 div.code-wrap 으로 감싸져있음
+        <p>
+          <strong>q4</strong>
+          경로
+          <code>./question/q4_react.js</code>
+        </p>
+
+        <div class="code-wrap">
+        <p>터미널</p>
+        <pre>
+          <code class="language-bash"><div>  $ npm install
+      $ npm start
+    </div></code></pre>
+    </div>
+    */
+
+      html {
+        overflow-x: hidden;
+      }
+
+      body {
+        font-family: "Noto Sans KR", sans-serif;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      ul,
+      ol,
+      li,
+      dl,
+      dt,
+      dd,
+      p,
+      table {
+        margin: 0;
+        padding: 0;
+        color: #494949;
+        letter-spacing: -0.025rem;
+        box-sizing: border-box;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-weight: 600;
+      }
+
+      a {
+        text-decoration: inherit;
+        display: block;
+        color: #5e9cff;
+        text-decoration: underline;
+      }
+
+      a::before {
+        content: "📎";
+      }
+
+      a img {
+        border: none;
+      }
+
+      img {
+        max-width: 100%;
+        vertical-align: middle;
+      }
+
+      ul li {
+        list-style: none;
+      }
+
+      p {
+        line-height: 1.8;
+      }
+
+      /* STYLE */
+
+      body {
+        padding: 0;
+        margin: 0;
+        line-height: 1.6;
+      }
+
+      h2 {
+        padding: 50px 0;
+        color: #ffffff;
+        font-size: 2rem;
+        text-align: center;
+        background: linear-gradient(45deg, #ed234b, #ff6c89, #ff6fb7);
+      }
+
+      h2::before {
+        content: "#";
+        display: inline-block;
+        margin-right: 5px;
+        color: #ff9db0;
+        font-weight: 300;
+        font-size: 2.2rem;
+      }
+
+      h3 {
+        position: relative;
+        margin: 30px 20px;
+        padding-bottom: 15px;
+        color: #303030;
+        font-size: 1.6rem;
+        border-bottom: 1px solid #ededed;
+      }
+
+      blockquote {
+        margin: 20px;
+        padding: 20px;
+        background: #f2f2f2;
+      }
+
+      strong {
+        display: block;
+        margin-top: 10px;
+      }
+
+      .code-wrap {
+        position: relative;
+        background: #2f303b;
+        margin: 15px 0 0 0;
+      }
+
+      .code-wrap > p {
+        position: absolute;
+        left: 0;
+        top: 0;
+        padding: 2px 15px;
+        font-size: 0.7rem;
+        color: #ffffff;
+        text-align: center;
+        background: #61c8cc;
+      }
+
+      code {
+        background: #ededed;
+      }
+
+      .language-html > div,
+      .language-css > div,
+      .language-scss > div,
+      .language-js > div {
+        color: #fff;
+        padding: 30px 20px;
+        background: #2f303b;
+      }
+
+      code.language-bash div {
+        margin-top: -20px;
+        padding: 30px 20px;
+        font-size: 1rem;
+        color: #ffffff;
+        background: #2f303b;
+        box-sizing: border-box;
+      }
+
+      code::after {
+        content: "";
+        display: block;
+      }
+
+      code.code-inlineBlock::after {
+        content: "";
+        display: inline-block;
+      }
+
+      .excute-text {
+        font-size: 0.8rem;
+        font-weight: bold;
+        color: #ed234b;
+      }
+
+      /* 좌, 우 여백 */
+
+      ol,
+      ul {
+        margin: 20px;
+        padding: 20px;
+        background: #f2f2f2;
+      }
+
+      ol li {
+        margin-left: 15px;
+      }
+
+      li {
+        font-size: 0.85rem;
+      }
+
+      p {
+        font-size: 0.85rem;
+      }
+
+      h4,
+      h5,
+      h6,
+      p,
+      img,
+      pre {
+        padding: 0 20px;
+      }
+
+      h4 {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2 id="case23--atomic-css---출제자-해설코드">
+      Case23 : atomic CSS - 출제자 해설코드
+    </h2>
+    <pre><code class="language-html"><div><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>atomic css (solution)<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;solution.css&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;flx pd32-24&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;w70p mgr32&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;fz24 fw700 color-black&quot;</span>&gt;</span>주문내역 (테이블)<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;mgt16 bd-top fz14 color-gray1 overflow-auto&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;flx-ac min-w-1000 h32 fw700 bd-bottom bg-gray7&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;pd0-8 w15p&quot;</span>&gt;</span>주문자<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;pd0-8 w15p&quot;</span>&gt;</span>연락처<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;pd0-8 w40p&quot;</span>&gt;</span>주소<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;pd0-8 w20p&quot;</span>&gt;</span>주문 내역<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;pd0-8 w10p&quot;</span>&gt;</span>결제<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>          
+                
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;flx-ac min-w-1000 h32 bd-bottom&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;pd0-8 w15p&quot;</span>&gt;</span>홍길동<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;pd0-8 w15p&quot;</span>&gt;</span>010-0000-0000<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;pd0-8 w40p&quot;</span>&gt;</span>서울시 강남구 강남대로 123 강남빌딩 10층<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;pd0-8 w20p&quot;</span>&gt;</span>하와이안 피자 R * 12<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;pd0-8 w10p color-primary&quot;</span>&gt;</span>결제완료<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;flx-ac min-w-1000 h32 bd-bottom&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;pd0-8 w15p&quot;</span>&gt;</span>홍길동<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;pd0-8 w15p&quot;</span>&gt;</span>010-0000-0000<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;pd0-8 w40p&quot;</span>&gt;</span>서울시 강남구 강남대로 123 강남빌딩 10층<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;pd0-8 w20p&quot;</span>&gt;</span>하와이안 피자 R * 12<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;pd0-8 w10p&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>현장결제<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;flx-ac min-w-1000 h32 bd-bottom&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;pd0-8 w15p&quot;</span>&gt;</span>홍길동<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;pd0-8 w15p&quot;</span>&gt;</span>010-0000-0000<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;pd0-8 w40p&quot;</span>&gt;</span>서울시 강남구 강남대로 123 강남빌딩 10층<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;pd0-8 w20p&quot;</span>&gt;</span>하와이안 피자 R * 12<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;pd0-8 w10p&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;color-primary&quot;</span>&gt;</span>결제완료<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;w30p&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;fz24 fw700 color-black&quot;</span>&gt;</span>주문내역 (카드)<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;mgt16 fz14 color-gray3&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;flx-column pd24 bd-r8 bg-white box-shadow&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;pd2-8 bd-r4 bg-primary fz10 fw700 color-white&quot;</span>&gt;</span>결제완료<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;mgt8 fz20 fw700 color-gray1&quot;</span>&gt;</span>하와이안 피자 R * 12<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;flx baseline mgt12&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;w60 mgr8 fw700&quot;</span>&gt;</span>주문자<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>홍길동<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;flx baseline mgt4&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;w60 mgr8 fw700&quot;</span>&gt;</span>연락처<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>010-0000-0000<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;flx baseline mgt4&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;w60 mgr8 fw700&quot;</span>&gt;</span>주문 내역<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>서울시 강남구 강남대로 123 강남빌딩 10층<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;mgt16 fz14 color-gray3&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;flx-column pd24 bd-r8 bg-white box-shadow&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;pd2-8 bd-r4 bg-gray1 fz10 fw700 color-white&quot;</span>&gt;</span>현장결제<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;mgt8 fz20 fw700 color-gray1&quot;</span>&gt;</span>하와이안 피자 R * 12<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;flx baseline mgt12&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;w60 mgr8 fw700&quot;</span>&gt;</span>주문자<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>홍길동<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;flx baseline mgt4&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;w60 mgr8 fw700&quot;</span>&gt;</span>연락처<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>010-0000-0000<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;flx baseline mgt4&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;w60 mgr8 fw700&quot;</span>&gt;</span>주문 내역<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>서울시 강남구 강남대로 123 강남빌딩 10층<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;mgt16 fz14 color-gray3&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;flx-column pd24 bd-r8 bg-white box-shadow&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;pd2-8 bd-r4 bg-primary fz10 fw700 color-white&quot;</span>&gt;</span>결제완료<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;mgt8 fz20 fw700 color-gray1&quot;</span>&gt;</span>하와이안 피자 R * 12<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;flx baseline mgt12&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;w60 mgr8 fw700&quot;</span>&gt;</span>주문자<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>홍길동<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;flx baseline mgt4&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;w60 mgr8 fw700&quot;</span>&gt;</span>연락처<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>010-0000-0000<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;flx baseline mgt4&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;w60 mgr8 fw700&quot;</span>&gt;</span>주문 내역<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>서울시 강남구 강남대로 123 강남빌딩 10층<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>    
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</div></code></pre>
+    <pre><code class="language-scss"><div><span class="hljs-comment">// figma : https://www.figma.com/file/9FXkniEMPgZKtJY4GwP60z/SecretCode?node-id=143%3A95</span>
+
+<span class="hljs-keyword">@import</span> url(<span class="hljs-string">&#x27;https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&amp;family=Roboto:wght@300;500;700&amp;display=swap&#x27;</span>);
+
+<span class="hljs-comment">// color palette</span>
+<span class="hljs-variable">$gray1</span>: <span class="hljs-number">#333333</span>;
+<span class="hljs-variable">$gray2</span>: <span class="hljs-number">#4f4f4f</span>;
+<span class="hljs-variable">$gray3</span>: <span class="hljs-number">#828282</span>;
+<span class="hljs-variable">$gray4</span>: <span class="hljs-number">#BDBDBD</span>;
+<span class="hljs-variable">$gray5</span>: <span class="hljs-number">#E0E0E0</span>;
+<span class="hljs-variable">$gray6</span>: <span class="hljs-number">#F2F2F2</span>;
+<span class="hljs-variable">$gray7</span>: <span class="hljs-number">#F9F9F9</span>;
+<span class="hljs-variable">$primary</span>: <span class="hljs-number">#ED234B</span>;
+
+<span class="hljs-comment">// reset css</span>
+<span class="hljs-selector-tag">body</span> {
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">font-family</span>: <span class="hljs-string">&#x27;Roboto&#x27;</span>, <span class="hljs-string">&#x27;Noto Sans KR&#x27;</span>, sans-serif;
+    -webkit-<span class="hljs-attribute">font</span>-smoothing: antialiased;
+    -moz-osx-<span class="hljs-attribute">font</span>-smoothing: grayscale;
+    *, *<span class="hljs-selector-pseudo">::before</span>, *<span class="hljs-selector-pseudo">::after</span> {
+        <span class="hljs-attribute">box-sizing</span>: border-box;
+        <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+        <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+    }
+}
+
+<span class="hljs-comment">// atomic css</span>
+<span class="hljs-comment">// flex</span>
+<span class="hljs-selector-class">.flx</span> { <span class="hljs-attribute">display</span>: flex; }
+<span class="hljs-selector-class">.flx-ac</span> { <span class="hljs-attribute">display</span>: flex; <span class="hljs-attribute">align-items</span>: center; }
+<span class="hljs-selector-class">.flx-column</span> { <span class="hljs-attribute">display</span>: flex; <span class="hljs-attribute">flex-direction</span>: column; }
+<span class="hljs-selector-class">.baseline</span> { <span class="hljs-attribute">align-items</span>: baseline; }
+
+<span class="hljs-comment">// margin</span>
+<span class="hljs-selector-class">.mgt4</span> { <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">4px</span>; }
+<span class="hljs-selector-class">.mgt8</span> { <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">8px</span>; }
+<span class="hljs-selector-class">.mgt12</span> { <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">12px</span>; }
+<span class="hljs-selector-class">.mgt16</span> { <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">16px</span>; }
+
+<span class="hljs-selector-class">.mgr8</span> { <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">8px</span>; }
+<span class="hljs-selector-class">.mgr32</span> { <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">32px</span>; }
+
+<span class="hljs-comment">// padding</span>
+<span class="hljs-selector-class">.pd32-24</span> { <span class="hljs-attribute">padding</span>: <span class="hljs-number">32px</span> <span class="hljs-number">24px</span>; }
+<span class="hljs-selector-class">.pd24</span> { <span class="hljs-attribute">padding</span>: <span class="hljs-number">24px</span>; }
+<span class="hljs-selector-class">.pd0-8</span> { <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">8px</span>; }
+<span class="hljs-selector-class">.pd2-8</span> { <span class="hljs-attribute">padding</span>: <span class="hljs-number">2px</span> <span class="hljs-number">8px</span>; }
+
+<span class="hljs-comment">// width</span>
+<span class="hljs-selector-class">.w10p</span> { <span class="hljs-attribute">width</span>: <span class="hljs-number">10%</span>; }
+<span class="hljs-selector-class">.w15p</span> { <span class="hljs-attribute">width</span>: <span class="hljs-number">15%</span>; }
+<span class="hljs-selector-class">.w20p</span> { <span class="hljs-attribute">width</span>: <span class="hljs-number">20%</span>; }
+<span class="hljs-selector-class">.w30p</span> { <span class="hljs-attribute">width</span>: <span class="hljs-number">30%</span>; }
+<span class="hljs-selector-class">.w40p</span> { <span class="hljs-attribute">width</span>: <span class="hljs-number">40%</span>; }
+<span class="hljs-selector-class">.w70p</span> { <span class="hljs-attribute">width</span>: <span class="hljs-number">70%</span>; }
+<span class="hljs-selector-class">.w60</span> { <span class="hljs-attribute">width</span>: <span class="hljs-number">60px</span>; <span class="hljs-attribute">flex-shrink</span>: <span class="hljs-number">0</span>; }
+<span class="hljs-selector-class">.min-w-1000</span> { <span class="hljs-attribute">min-width</span>: <span class="hljs-number">1000px</span>; }
+
+<span class="hljs-comment">// height</span>
+<span class="hljs-selector-class">.h32</span> { <span class="hljs-attribute">height</span>: <span class="hljs-number">32px</span>; }
+
+<span class="hljs-comment">// border-radius</span>
+<span class="hljs-selector-class">.bd-r4</span> { <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">4px</span>; }
+<span class="hljs-selector-class">.bd-r8</span> { <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">8px</span>; }
+
+<span class="hljs-comment">// border</span>
+<span class="hljs-selector-class">.bd-top</span> { <span class="hljs-attribute">border-top</span>: <span class="hljs-number">1px</span> solid <span class="hljs-variable">$gray5</span>; }
+<span class="hljs-selector-class">.bd-bottom</span> { <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">1px</span> solid <span class="hljs-variable">$gray5</span>; }
+
+<span class="hljs-comment">// background</span>
+<span class="hljs-selector-class">.bg-white</span> { <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#fff</span>; }
+<span class="hljs-selector-class">.bg-gray1</span> { <span class="hljs-attribute">background-color</span>: <span class="hljs-variable">$gray1</span>; }
+<span class="hljs-selector-class">.bg-gray7</span> { <span class="hljs-attribute">background-color</span>: <span class="hljs-variable">$gray7</span>; }
+<span class="hljs-selector-class">.bg-primary</span> { <span class="hljs-attribute">background-color</span>: <span class="hljs-variable">$primary</span>; }
+
+<span class="hljs-comment">// font-size</span>
+<span class="hljs-selector-class">.fz10</span> { <span class="hljs-attribute">font-size</span>: <span class="hljs-number">10px</span>; }
+<span class="hljs-selector-class">.fz14</span> { <span class="hljs-attribute">font-size</span>: <span class="hljs-number">14px</span>; }
+<span class="hljs-selector-class">.fz20</span> { <span class="hljs-attribute">font-size</span>: <span class="hljs-number">20px</span>; }
+<span class="hljs-selector-class">.fz24</span> { <span class="hljs-attribute">font-size</span>: <span class="hljs-number">24px</span>; }
+
+<span class="hljs-comment">// font-weight</span>
+<span class="hljs-selector-class">.fw400</span> { <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">400</span>; }
+<span class="hljs-selector-class">.fw700</span> { <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">700</span>; }
+
+<span class="hljs-comment">// color</span>
+<span class="hljs-selector-class">.color-white</span> { <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>; }
+<span class="hljs-selector-class">.color-black</span> { <span class="hljs-attribute">color</span>: <span class="hljs-number">#000</span>; }
+<span class="hljs-selector-class">.color-gray1</span> { <span class="hljs-attribute">color</span>: <span class="hljs-variable">$gray1</span>; }
+<span class="hljs-selector-class">.color-gray2</span> { <span class="hljs-attribute">color</span>: <span class="hljs-variable">$gray2</span>; }
+<span class="hljs-selector-class">.color-gray3</span> { <span class="hljs-attribute">color</span>: <span class="hljs-variable">$gray3</span>; }
+<span class="hljs-selector-class">.color-gray4</span> { <span class="hljs-attribute">color</span>: <span class="hljs-variable">$gray4</span>; }
+<span class="hljs-selector-class">.color-gray5</span> { <span class="hljs-attribute">color</span>: <span class="hljs-variable">$gray5</span>; }
+<span class="hljs-selector-class">.color-gray6</span> { <span class="hljs-attribute">color</span>: <span class="hljs-variable">$gray6</span>; }
+<span class="hljs-selector-class">.color-gray7</span> { <span class="hljs-attribute">color</span>: <span class="hljs-variable">$gray7</span>; }
+<span class="hljs-selector-class">.color-primary</span> { <span class="hljs-attribute">color</span>: <span class="hljs-variable">$primary</span>; }
+
+<span class="hljs-comment">// overflow</span>
+<span class="hljs-selector-class">.overflow-auto</span> { <span class="hljs-attribute">overflow</span>: auto; }
+
+<span class="hljs-comment">// box-shaodw</span>
+<span class="hljs-selector-class">.box-shadow</span> { <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">0px</span> <span class="hljs-number">0px</span> <span class="hljs-number">20px</span> rgba(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.1</span>); }
+
+</div></code></pre>
+    <h3 id="-case23--atomic-css--문제와-같이-보면-좋은-팁">
+      &lt; Case23 : atomic CSS &gt; 문제와 같이 보면 좋은 팁
+    </h3>
+    <p>
+      다른강사님께서 해당 출제문제를 본 후, 같이 확인하면 좋겠다고 주신
+      의견입니다.
+    </p>
+    <h4 id="html">HTML</h4>
+    <p>최근 Atomic CSS가 관심을 받고 있습니다.</p>
+    <p>
+      이는 프론트엔드 개발 시 UI 작업을 위한 CSS의 복잡성 때문에 고통받고 있는
+      문제를 해결하기 위해 구조와 표현을 분리하지 않고 마크업과 UI 디자인을
+      함께하는 방식입니다.
+    </p>
+    <p>
+      CSS의 수정 없이 HTML만 수정한다는 점이 유지 보수나 작업 생상성을 높인다고
+      생각하는 것 같습니다.
+    </p>
+    <p>
+      그러나 빠르고 편리하게 UI를 작성한다는 측면만 강조하고 콘텐츠의 의미나
+      웹접근성에 대해 고려하지 않아도 된다는 것은 아닙니다.
+    </p>
+    <p>
+      앞서 살펴본 다양한 예시처럼 Atomic CSS 방법론을 사용하더라도 의미에 맞는
+      요소로 마크업하고 해당 콘텐츠에 대한 접근성을 고려하는 것은 필수적인
+      부분입니다.
+    </p>
+    <p>
+      시맨틱 요소의 사용과 함께 WAI-ARIA를 적극적으로 활용하여 생산성만이 아닌
+      접근성과 사용성도 높은 UI를 개발하시기 바랍니다.
+    </p>
+    <p>
+      <a href="https://nuli.navercorp.com/community/article/1084101?email=true"
+        >https://nuli.navercorp.com/community/article/1084101?email=true</a
+      >
+    </p>
+    <p>
+      <a href="https://developer.mozilla.org/ko/docs/Learn/Accessibility/HTML"
+        >https://developer.mozilla.org/ko/docs/Learn/Accessibility/HTML</a
+      >
+    </p>
+    <p>
+      <a href="https://www.w3.org/TR/wai-aria-practices-1.2/"
+        >https://www.w3.org/TR/wai-aria-practices-1.2/</a
+      >
+    </p>
+    <h4 id="css">CSS</h4>
+    <p>Atomic CSS는 가장 작은 단위로 스타일을 정의합니다.</p>
+    <pre><code class="language-css"><div><span class="hljs-selector-class">.flx</span> {
+ <span class="hljs-attribute">display</span>: flex;
+}
+<span class="hljs-selector-class">.pd0-8</span> {
+ <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">8px</span>;
+}
+<span class="hljs-selector-class">.w20p</span> {
+ <span class="hljs-attribute">width</span>: <span class="hljs-number">20%</span>;
+}
+<span class="hljs-selector-class">.bd-r8</span> {
+ <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">8px</span>;
+}
+</div></code></pre>
+    <p>
+      페이스북은 Atomic CSS 도입으로 전체 스타일시트 사이즈를 400KB 에서 70KB로
+      80% 가량 줄였다고 했을만큼 Atomic CSS를 잘 활용하면 개발 생산성과 성능
+      두마리 토끼를 모두 잡을 수 있을 수 있습니다.
+    </p>
+    <p>
+      <a href="https://engineering.fb.com/2020/05/08/web/facebook-redesign/"
+        >https://engineering.fb.com/2020/05/08/web/facebook-redesign/</a
+      >
+    </p>
+    <p>그러나 모든 케이스에 대한 정답은 존재하지 않습니다.</p>
+    <p>
+      웹 UI 제작은 다양한 상황에서 활용되기 때문에 단순히 용량을 줄이는게
+      정답이라고 생각하지 마시고 상황에 맞는 선택을 고민해 보시기를 권해
+      드립니다.
+    </p>
+    <p>
+      아래 사이트는 Atomic CSS에 관한 내용과 레퍼런스가 잘 정리되어 있습니다.
+      학습 시 참고하시면 도움이 될 것 같습니다.
+    </p>
+    <p>
+      <a href="https://css-tricks.com/lets-define-exactly-atomic-css/"
+        >https://css-tricks.com/lets-define-exactly-atomic-css/</a
+      >
+    </p>
+  </body>
+</html>
