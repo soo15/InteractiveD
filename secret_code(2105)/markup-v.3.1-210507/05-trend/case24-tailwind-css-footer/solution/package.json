@@ -1,0 +1,18 @@
+{
+  "name": "01-tailwind-css-footer",
+  "version": "1.0.0",
+  "description": "### 케이스 주제",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "postcss styles/tailwind.css -o styles/style.css",
+    "watch": "postcss styles/tailwind.css -o styles/style.css --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "autoprefixer": "^9.7.5",
+    "postcss-cli": "^7.1.0",
+    "tailwindcss": "^1.2.0"
+  }
+}

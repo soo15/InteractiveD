@@ -1,0 +1,51 @@
+// figma : https://www.figma.com/file/9FXkniEMPgZKtJY4GwP60z/SecretCode?node-id=143%3A95
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Roboto:wght@300;500;700&display=swap');
+
+// color palette
+$gray1: #333333;
+$gray2: #4f4f4f;
+$gray3: #828282;
+$gray4: #BDBDBD;
+$gray5: #E0E0E0;
+$gray6: #F2F2F2;
+$gray7: #F9F9F9;
+$primary: #ED234B;
+
+// reset css
+body {
+    margin: 0;
+    font-family: 'Roboto', 'Noto Sans KR', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    *, *::before, *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+// media query
+@mixin mobile-style {
+    @media (max-width: 767px) {
+        @content;
+    }
+}
+
+@mixin pc-style {
+    @media (min-width: 768px) {
+        @content;
+    }
+}
+
+.content {
+    padding: 32px 24px;
+}
+
+.page-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #000;
+}
+
+// type here...

@@ -1,0 +1,79 @@
+/* variables */
+/* reset */
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+*:focus {
+  outline: none;
+}
+
+html,
+body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+img {
+  display: block;
+}
+
+h1 {
+  text-align: center;
+  margin: 35px auto 0;
+}
+
+.nth-of-type_wrap {
+  width: 100%;
+  max-width: 1024px;
+  margin: 40px auto;
+  padding: 40px;
+  background-color: #fafafa;
+  counter-reset: items;
+}
+
+.nth-of-type_wrap::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.nth-of-type_wrap .item {
+  position: relative;
+  float: left;
+  width: calc(100% / 4);
+  height: 220px;
+  padding: 15px;
+  -webkit-box-shadow: 14px 17px 34px -20px rgba(0, 0, 0, 0.75);
+  box-shadow: 14px 17px 34px -20px rgba(0, 0, 0, 0.75);
+  color: #000;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.3);
+  /* type here */
+}
+
+.nth-of-type_wrap .item img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+  transform: translate3d(-50%, -50%, 0);
+}
+
+.nth-of-type_wrap .item:before {
+  counter-increment: items;
+  content: counter(items);
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  font-size: 50px;
+}

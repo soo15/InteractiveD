@@ -1,0 +1,150 @@
+@charset "UTF-8";
+
+/* reset */
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+*:focus {
+  outline: none;
+}
+
+html,
+body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  text-align: center;
+  margin: 35px auto 0;
+}
+
+.grid_wrap {
+  width: 100%;
+  max-width: 1024px;
+  margin: 40px auto;
+  background-color: #fafafa;
+  counter-reset: items;
+  /* column의 넓이를 정하고.. 또는 개수를 정한다 */
+  -webkit-columns: 4;
+  columns: 4;
+  -webkit-column-gap: 10px;
+  column-gap: 10px;
+  /* 칼럼의 개수를 각각 변경해준다. */
+}
+
+.grid_wrap .item {
+  position: relative;
+  height: 140px;
+  margin-bottom: 10px;
+  padding: 15px;
+  box-shadow: 14px 17px 34px -20px rgba(0, 0, 0, 0.75);
+  color: #000;
+  box-sizing: border-box;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.3);
+  -webkit-column-break-inside: avoid;
+  break-inside: avoid-column;
+}
+
+.grid_wrap .item:nth-of-type(2n) {
+  height: 140px;
+}
+
+.grid_wrap .item:nth-of-type(3n) {
+  height: 200px;
+}
+
+.grid_wrap .item:before {
+  counter-increment: items;
+  content: counter(items);
+  position: relative;
+  z-index: 1;
+  color: #fff;
+}
+
+.grid_wrap .item img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  /* 3d 로 grid 내의 trasnform을 제어하게 되면 현재는 버그가 있습니다. */
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+@media (max-width: 1024px) {
+  .grid_wrap {
+    -webkit-columns: 3;
+    columns: 3;
+  }
+}
+
+@media (max-width: 767px) {
+  .grid_wrap {
+    -webkit-columns: 2;
+    columns: 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid_wrap {
+    -webkit-columns: 1;
+    columns: 1;
+  }
+}
+
+/* 2단 레이아웃 만들기 ie 10까지 대응 */
+
+.grid_layout {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 3fr 1fr;
+  grid-template-columns: 3fr 1fr;
+  grid-template-areas: "header header" "main aside" "footer footer";
+  max-width: 1024px;
+  margin: 0 auto;
+  color: #fff;
+  font-size: 15px;
+}
+
+.grid_layout * {
+  padding: 10px;
+}
+
+.grid_layout header {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: header;
+  background: dodgerblue;
+}
+
+.grid_layout aside {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: aside;
+  background: darkkhaki;
+}
+
+.grid_layout .container {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: main;
+  min-height: 800px;
+  background: powderblue;
+}
+
+.grid_layout footer {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: footer;
+  background: darkblue;
+}

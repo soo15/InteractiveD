@@ -1,0 +1,449 @@
+@charset "UTF-8";
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body {
+  color: #181818;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.container {
+  width: 1020px;
+  margin: 0 auto;
+  padding-bottom: 100px;
+}
+
+.section__title {
+  margin: 76px 0 22px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.section__title .section__titleCaption {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.section__title em {
+  color: #0074e9;
+}
+
+.sr-only {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.glide__bullet {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 19px;
+}
+
+.glide__bullet li {
+  width: 9px;
+  height: 9px;
+  margin: 0 4px;
+  border-radius: 50%;
+  background-color: #cccccc;
+  list-style: none;
+}
+
+.glide__bullet li.glide__bullet--active {
+  background-color: #aaa9a9;
+}
+
+.category__unit {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-style: solid;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+}
+
+.category__unit:not(:first-of-type) {
+  margin-top: 30px;
+}
+
+.category__unit.supplies {
+  border-color: #9d7a6d;
+}
+
+.category__unit.supplies .category__title {
+  color: #9d7a6d;
+}
+
+.category__unit.supplies .category__keywords {
+  color: #9d7a6d;
+}
+
+.category__unit.supplies .category__keywords a:hover {
+  border-color: #9d7a6d;
+  background-color: #9d7a6d;
+}
+
+.category__unit.supplies .category__bannerTitle {
+  background-color: #9d7a6d;
+}
+
+.category__unit.kitchen {
+  border-color: #00b599;
+}
+
+.category__unit.kitchen .category__title {
+  color: #00b599;
+}
+
+.category__unit.kitchen .category__keywords {
+  color: #00b599;
+}
+
+.category__unit.kitchen .category__keywords a:hover {
+  border-color: #00b599;
+  background-color: #00b599;
+}
+
+.category__unit.kitchen .category__bannerTitle {
+  background-color: #00b599;
+}
+
+.category__detail {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+  width: 190px;
+  padding: 29px 0 19px;
+}
+
+.category__title {
+  font-size: 24px;
+}
+
+.category__keywords dt {
+  color: #181818;
+  font-size: 18px;
+}
+
+.category__keywords dd {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin-top: 10px;
+}
+
+.category__keywords a {
+  display: block;
+  padding: 6px 10px;
+  border: 1px solid #cccccc;
+  color: inherit;
+  font-size: 12px;
+  text-decoration: none;
+  /* 
+      color: inherit 에 대한 설명이 영상에서 빠져있어 추가합니다
+      color:inherit 는 상위(부모)엘리먼트의 에서 정해준 색상을 그대로 상속받는다는 의미입니다. 
+      .category__keywords {
+        color: $color;
+      }
+      에서 정해준 color 를 그대로 상속받습니다.
+    */
+}
+
+.category__keywords a:hover {
+  color: #fff;
+}
+
+.category__keywords a + a {
+  margin-top: 5px;
+}
+
+.category__banner {
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+  overflow: hidden;
+  position: relative;
+  width: 290px;
+  height: 100%;
+  border-left: 1px solid #cccccc;
+  border-right: 1px solid #cccccc;
+}
+
+.category__bannerItem {
+  position: relative;
+}
+
+.category__bannerItem img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.category__bannerTitle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  z-index: 1;
+  bottom: 47px;
+  left: 30px;
+  right: 30px;
+  height: 72px;
+  padding: 0 10px;
+  color: #fff;
+}
+
+.category__bannerTitle strong {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 18px;
+}
+
+.category__bannerTitle p {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-top: 5px;
+}
+
+.category__productList {
+  -webkit-box-flex: 1;
+      -ms-flex: auto;
+          flex: auto;
+  padding-left: 10px;
+}
+
+.productList {
+  display: -ms-grid;
+  display: grid;
+  grid: repeat(2, 1fr)/repeat(3, 1fr);
+  -webkit-column-gap: 10px;
+          column-gap: 10px;
+  height: 100%;
+  position: relative;
+}
+
+.productList::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  height: 1px;
+  border-top: 1px solid #cccccc;
+}
+
+.productItem > a {
+  color: #181818;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.productItem__thumbnail img {
+  width: 170px;
+  height: 168px;
+}
+
+.productItem__title {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-height: 19px;
+}
+
+.productItem__price {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.productItem__price strong {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 25px;
+}

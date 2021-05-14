@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+html(lang="ko")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover")
+        title 04-grid
+        link(rel="stylesheet", href="./solution.css")
+    body
+
+        h1 Vertical
+        .grid_wrap
+            -var index = 1;
+            -for (var i=0; i<20; i++)
+                .item
+                    img(src="./img/box_" + index++  + ".jpg", alt="")
+
+        h1 2단 Layout
+        .grid_layout
+            header
+                h2 Header
+            section.container
+                h2 Main
+            aside
+                h2 Aside
+            footer
+                h2 Footer
