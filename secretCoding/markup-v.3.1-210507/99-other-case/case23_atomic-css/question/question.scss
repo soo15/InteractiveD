@@ -1,0 +1,80 @@
+// figma : https://www.figma.com/file/9FXkniEMPgZKtJY4GwP60z/SecretCode?node-id=143%3A95
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Roboto:wght@300;500;700&display=swap');
+
+// color palette
+$gray1: #333333;
+$gray2: #4f4f4f;
+$gray3: #828282;
+$gray4: #BDBDBD;
+$gray5: #E0E0E0;
+$gray6: #F2F2F2;
+$gray7: #F9F9F9;
+$primary: #ED234B;
+
+// reset css
+body {
+    margin: 0;
+    font-family: 'Roboto', 'Noto Sans KR', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    *, *::before, *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+// atomic css 를 만들어주세요~
+// 클래스명 생성 규칙은 따로 없습니다. 본인이 편리한 방식대로 생성하시면 됩니다.
+// 만약 협업하는 사람이 있다면 함께 사용해도 헷갈리지 않을 클래스명을 고려해보는 것도 좋습니다.
+// 당황하지 않도록 큰 카테고리별 1개씩은 예제로 생성해두었습니다.
+
+// flex
+.flx { display: flex; }
+
+// margin
+.mgr32 { margin-right: 32px; }
+
+// padding
+.pd32-24 { padding: 32px 24px; }
+
+// width
+.w30p { width: 30%; }
+.w70p { width: 70%; }
+
+// height
+.h32 { height: 32px; }
+
+// border-radius
+.bd-r4 { border-radius: 4px; }
+
+// border
+.bd-top { border-top: 1px solid $gray5; }
+
+// background
+.bg-gray1 { background-color: $gray1; }
+
+// font-size
+.fz24 { font-size: 24px; }
+
+// font-weight
+.fw700 { font-weight: 700; }
+
+// color
+.color-white { color: #fff; }
+.color-black { color: #000; }
+.color-gray1 { color: $gray1; }
+.color-gray2 { color: $gray2; }
+.color-gray3 { color: $gray3; }
+.color-gray4 { color: $gray4; }
+.color-gray5 { color: $gray5; }
+.color-gray6 { color: $gray6; }
+.color-gray7 { color: $gray7; }
+.color-primary { color: $primary; }
+
+// overflow
+.overflow-auto { overflow: auto; }
+
+// box-shaodw
+.box-shadow { box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); }

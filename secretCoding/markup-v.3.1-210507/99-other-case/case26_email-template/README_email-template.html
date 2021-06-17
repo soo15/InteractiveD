@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Case26 : Email Template</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css"
+    />
+    <style>
+      /*
+      ==================== html => MD 작업 시, 꼭! 확인해주세요. ====================
+      1. Markdown All in One : Print current document to HTML 실행. (VScode extension)
+      2. 생성된 README.html에서 body 태그 안에 있는것들을 복사
+      3. 루트 폴더에 README_OOO.md 생성 (OOO : Case 이름)
+      4. ! 자동완성을 통해 기본 html 폼을 만들고, body태그 안에 <2>의 내용 붙여넣기
+      5. font / code style에 관련된 <link>세줄과 <style> 태그 안에 있는 내용 붙여넣기
+      6. 상단 <title> 태그 안에 <h2> 텍스트 삽입
+      7. <code> tag가 줄바꿈 될 때, class명으로 "code-inlineBlock" 넣어주기
+      8. <img>태그 경로 변경해주기
+      [ EXAMPLE ]
+      [ 변경 전 ] : 절대경로로 되어있음
+      <img
+          width="600px"
+          src="file:////Users/ming/Desktop/ui-component/case2_InfiniteScroll/example_image.gif"
+        />
+      [ 변경 후 ] : 상대경로로 수정
+      <img
+          width="600px"
+          src="./example_image.gif"
+        />
+      8. html 내에 <h3>실행 방법 및 의존성 모듈 설치</h3> 하위 내용 아래와 같이 수정
+      [ EXAMPLE ]
+      [ 변경 전 ] : p에 className 없음
+        <p>
+          <strong>q1</strong>
+          경로
+          <code>./question/q1_js</code>
+          index.html 열기
+        </p>
+      [ 변경 후 ] : p에 className 있음
+        <p>
+          <strong>q1</strong>
+          경로
+          <code>./question/q1_js</code>
+          <p class="excute-text">index.html 열기</p>
+        </p>
+
+
+      [ 변경 전 ] : p태그와 pre태그가 div로 감싸져있지 않음
+        <p>
+          <strong>q4</strong>
+          경로
+          <code>./question/q4_react.js</code>
+        </p>
+
+        <p>터미널</p>
+        <pre><code class="language-bash"><div>  $ npm install
+        $ npm start
+      </div></code></pre>
+
+      [ 변경 후 ] : p태그와 pre태그가 div.code-wrap 으로 감싸져있음
+        <p>
+          <strong>q4</strong>
+          경로
+          <code>./question/q4_react.js</code>
+        </p>
+
+        <div class="code-wrap">
+        <p>터미널</p>
+        <pre>
+          <code class="language-bash"><div>  $ npm install
+      $ npm start
+    </div></code></pre>
+    </div>
+    */
+
+      html {
+        overflow-x: hidden;
+      }
+
+      body {
+        font-family: "Noto Sans KR", sans-serif;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      ul,
+      ol,
+      li,
+      dl,
+      dt,
+      dd,
+      p,
+      table {
+        margin: 0;
+        padding: 0;
+        color: #494949;
+        letter-spacing: -0.025rem;
+        box-sizing: border-box;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-weight: 600;
+      }
+
+      a {
+            text-decoration: inherit;
+            display: block;
+            color: #5e9cff;
+            text-decoration: underline;
+        }
+
+        a::before {
+            content: '📎';
+        }
+
+      a img {
+        border: none;
+      }
+
+      img {
+        max-width: 100%;
+        vertical-align: middle;
+      }
+
+      ul li {
+        list-style: none;
+      }
+
+      p {
+        line-height: 1.8;
+      }
+      /* STYLE */
+
+      body {
+        padding: 0;
+        margin: 0;
+        line-height: 1.6;
+      }
+
+      h2 {
+        padding: 50px 0;
+        color: #ffffff;
+        font-size: 2rem;
+        text-align: center;
+        background: linear-gradient(45deg, #ed234b, #ff6c89, #ff6fb7);
+      }
+
+      h2::before {
+        content: "#";
+        display: inline-block;
+        margin-right: 5px;
+        color: #ff9db0;
+        font-weight: 300;
+        font-size: 2.2rem;
+      }
+
+      h3 {
+        position: relative;
+        margin: 30px 20px;
+        padding-bottom: 15px;
+        color: #303030;
+        font-size: 1.6rem;
+        border-bottom: 1px solid #ededed;
+      }
+
+      blockquote {
+        margin: 20px;
+        padding: 20px;
+        background: #f2f2f2;
+      }
+
+      strong {
+        display: block;
+        margin-top: 10px;
+      }
+
+      .code-wrap {
+        position: relative;
+        background: #2f303b;
+        margin: 15px 0 0 0;
+      }
+
+      .code-wrap > p {
+        position: absolute;
+        left: 0;
+        top: 0;
+        padding: 2px 15px;
+        font-size: 0.7rem;
+        color: #ffffff;
+        text-align: center;
+        background: #61c8cc;
+      }
+
+      code {
+        background: #ededed;
+      }
+
+      .language-html > div,
+      .language-css > div,
+      .language-scss > div,
+      .language-js > div {
+        color: #fff;
+        padding: 30px 20px;
+        background: #2f303b;
+      }
+
+      code.language-bash div {
+        margin-top: -20px;
+        padding: 30px 20px;
+        font-size: 1rem;
+        color: #ffffff;
+        background: #2f303b;
+        box-sizing: border-box;
+      }
+
+      code::after {
+        content: "";
+        display: block;
+      }
+
+      code.code-inlineBlock::after {
+        content: "";
+        display: inline-block;
+      }
+
+      .excute-text {
+        font-size: 0.8rem;
+        font-weight: bold;
+        color: #ed234b;
+      }
+
+      ol > li > ul,
+      ul > li > ul {
+        background: #ffffff;
+      }
+      /* 좌, 우 여백 */
+
+      ol,
+      ul {
+        margin: 20px;
+        padding: 20px;
+        background: #f2f2f2;
+      }
+
+      ol li {
+        margin-left: 15px;
+      }
+
+      li {
+        font-size: 0.85rem;
+      }
+
+      p {
+        font-size: 0.85rem;
+      }
+
+      h4,
+      h5,
+      h6,
+      p,
+      pre {
+        padding: 0 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2 id="case26--email-template">Case26 : Email Template</h2>
+    <h3 id="케이스-주제">케이스 주제</h3>
+    <p>
+      이메일 클라이언트 환경에 맞춰 이메일 템플릿을 제작해봅니다. 이는 이메일
+      서명 마크업에도 동일하게 적용됩니다.
+    </p>
+    <br />
+    <h3 id="기능-요구사항">기능 요구사항</h3>
+    <ol>
+      <li>디자인에 요구된 화면을 이메일 템플릿으로 구현한다.</li>
+      <li>
+        다양한 이메일 클라이언트 환경에서 최대한 비슷한 디자인을 구현한다.
+      </li>
+      <li>다크 모드 환경에서 이미지나 텍스트의 가시성도 고려해주세요.</li>
+    </ol>
+    <br />
+    <h3 id="보충-설명">보충 설명</h3>
+    <p>
+      현업에서 일하기 전까지는 예상하지 못한 케이스가 바로 이메일 템플릿을
+      제작하는 것입니다. 마케팅 툴로 별도로 제작해서 발송하는 경우도 있지만,
+      기본적인 회원가입/로그인/비밀번호 찾기 이메일부터 결제/환불 등 자사가
+      서비스하는 내용을 담은 이메일은 직접 템플릿을 개발해서 사용하는 경우가
+      빈번합니다. 이메일 클라이언트 환경에서는 웹 페이지를 제작하듯이 만들 수
+      없기 때문에 이메일 템플릿 개발에 맞춰 따로 제작해야 합니다. 이번
+      케이스에서는 그 과정을 다루어 봅니다.
+    </p>
+    <p>
+      이메일 클라이언트 환경은 굉장히 다양하기 때문에 100% 똑같이 구현할 수는
+      없지만 레이아웃이 무너지지 않는 정도는 필수로 챙겨져야 합니다. 권장하는
+      테스트 환경은 아래와 같습니다. 윈도우 IE11/Outlook 앱만 신경써서
+      확인하시면 다른 환경에서는 대부분 이슈 없을 겁니다. <br />
+    </p>
+    <p>
+      <a href="https://www.caniemail.com/scoreboard/"
+        >Email Client Support Scoreboard</a
+      >
+      <img
+        src="./client.png"
+        alt="client"
+      />
+    </p>
+    <br />
+    <h3 id="문제">문제</h3>
+    <p>
+      <a
+        href="https://www.figma.com/file/9FXkniEMPgZKtJY4GwP60z/SecretCode?node-id=388%3A72&amp;viewport=479%2C645%2C0.7095826268196106"
+        >👩🏻‍🎨 Figma에서 확인하기</a
+      >
+      <img
+        src="./example.png"
+        alt="example"
+      />
+      <img
+        src="./grid-guide.png"
+        alt="guide"
+      />
+    </p>
+    <br />
+    <h3 id="주요-학습-키워드">주요 학습 키워드</h3>
+    <ul>
+      <li>email markup</li>
+    </ul>
+    <br />
+    <h3 id="참고-링크-호환성-확인">참고 링크: 호환성 확인</h3>
+    <ul>
+      <li>
+        <a href="https://www.campaignmonitor.com/css/"
+          >https://www.campaignmonitor.com/css/</a
+        >
+      </li>
+      <li>
+        <a href="https://www.caniemail.com/">https://www.caniemail.com/</a>
+      </li>
+      <li>
+        <a href="https://www.htmlemailcheck.com/"
+          >https://www.htmlemailcheck.com/</a
+        >
+      </li>
+    </ul>
+    <br />
+    <h3 id="작성해주셔야-하는-question-파일경로">
+      작성해주셔야 하는 question 파일경로
+    </h3>
+    <p>
+      <code>./question/question.html</code>
+      <code>./question/question.css</code>
+      <code>./question/question.scss</code>
+    </p>
+    <br />
+    <h3 id="실행-방법">실행 방법</h3>
+    <p>
+      경로
+      <code>./question/question.html</code>
+      index.html 열기
+    </p>
+    <p>
+      <br /><br />
+      <hr />
+      <br />
+    </p>
+    <h3 id="-필독-이메일에서-안-되는-것들-">
+      ✨ (필독) 이메일에서 안 되는 것들 ✨
+    </h3>
+    <h3 id="-미디어쿼리-반응형">❌ 미디어쿼리 (반응형)</h3>
+    <p>
+      자연스럽게 가로폭이 줄어드는 것 외에 모든 반응형 제어가 불가합니다.
+      미디어쿼리는 윈도우 기반의 메일 클라이언트들에서 대부분 지원하지 않아
+      호환성의 이슈로 사용하지 않습니다.
+    </p>
+    <p>
+      <img
+        src="./media.png"
+        alt="media"
+      />
+      <a href="https://www.caniemail.com/search/?s=%40media"
+        >https://www.caniemail.com/search/?s=%40media</a
+      >
+    </p>
+    <p><strong>PC → Mobile로 화면이 줄어들 때</strong></p>
+    <ul>
+      <li>레이아웃이 (2단 → 1단) 변경 ❌</li>
+      <li>
+        특정 워딩에서 개행 ❌
+        <ul>
+          <li>
+            pc (인생을 바꾸는 교육, 패스트캠퍼스.) → m (인생을 바꾸는 교육,/
+            패스트캠퍼스) ❌
+            <ul>
+              <li>자연스러운 가로폭 감소에 의한 개행이 아닌 임의 개행 불가</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <br />
+    <h3 id="-웹-폰트">❌ 웹 폰트</h3>
+    <p>
+      이메일 클라이언트에서는 웹폰트를 사용할 수 없습니다. 따라서 기본 폰트셋은
+      시스템 기본 폰트를 우선 적용합니다.
+    </p>
+    <pre><code class="language-css"><div><span class="hljs-selector-tag">font-family</span>: <span class="hljs-selector-tag">BlinkMacSystemFont</span>, &#x27;<span class="hljs-selector-tag">Apple</span> <span class="hljs-selector-tag">SD</span> <span class="hljs-selector-tag">Gothic</span> <span class="hljs-selector-tag">Neo</span>&#x27;, &#x27;맑은 고딕&#x27;, <span class="hljs-selector-tag">sans-serif</span>;
+</div></code></pre>
+    <p>
+      <img
+        src="./font.png"
+        alt="font"
+      />
+      <a href="https://www.caniemail.com/search/?s=font"
+        >https://www.caniemail.com/search/?s=font</a
+      >
+    </p>
+    <br />
+    <h3 id="-색상값-opacity-조정-불가">❌ 색상값 opacity 조정 불가</h3>
+    <pre><code class="language-css"><div><span class="hljs-selector-tag">color</span>: <span class="hljs-selector-tag">rgba</span>(0, 0, 0, 0<span class="hljs-selector-class">.2</span>); // ❌ 사용불가
+<span class="hljs-selector-tag">color</span>: <span class="hljs-selector-id">#222</span>; // ✅ 사용가능 (정확한 <span class="hljs-selector-tag">hex</span> 값을 넣어주세요)
+</div></code></pre>
+    <p>
+      <a
+        href="https://www.campaignmonitor.com/css/color-background/rgba-colors/"
+        >https://www.campaignmonitor.com/css/color-background/rgba-colors/</a
+      >
+    </p>
+  </body>
+</html>

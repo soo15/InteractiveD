@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Case27 : category-item-list</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css" />
+    <style>
+      /*
+              ==================== html => MD 작업 시, 꼭! 확인해주세요. ====================
+              1. Markdown All in One : Print current document to HTML 실행. (VScode extension)
+              2. 생성된 README.html에서 body 태그 안에 있는것들을 복사
+              3. 루트 폴더에 README_OOO.md 생성 (OOO : Case 이름)
+              4. ! 자동완성을 통해 기본 html 폼을 만들고, body태그 안에 <2>의 내용 붙여넣기
+              5. font / code style에 관련된 <link>세줄과 <style> 태그 안에 있는 내용 붙여넣기
+              6. 상단 <title> 태그 안에 <h2> 텍스트 삽입
+              7. <code> tag가 줄바꿈 될 때, class명으로 "code-inlineBlock" 넣어주기
+              8. <img>태그 경로 변경해주기
+              [ EXAMPLE ]
+              [ 변경 전 ] : 절대경로로 되어있음
+              <img
+                  width="600px"
+                  src="file:////Users/ming/Desktop/ui-component/case2_InfiniteScroll/example_image.gif"
+                />
+              [ 변경 후 ] : 상대경로로 수정
+              <img
+                  width="600px"
+                  src="./example_image.gif"
+                />
+              8. html 내에 <h3>실행 방법 및 의존성 모듈 설치</h3> 하위 내용 아래와 같이 수정
+              [ EXAMPLE ]
+              [ 변경 전 ] : p에 className 없음
+                <p>
+                  <strong>q1</strong>
+                  경로
+                  <code>./question/q1_js</code>
+                  index.html 열기
+                </p>
+              [ 변경 후 ] : p에 className 있음
+                <p>
+                  <strong>q1</strong>
+                  경로
+                  <code>./question/q1_js</code>
+                  <p class="excute-text">index.html 열기</p>
+                </p>
+          
+          
+              [ 변경 전 ] : p태그와 pre태그가 div로 감싸져있지 않음
+                <p>
+                  <strong>q4</strong>
+                  경로
+                  <code>./question/q4_react.js</code>
+                </p>
+          
+                <p>터미널</p>
+                <pre><code class="language-bash"><div>  $ npm install
+                $ npm start
+              </div></code></pre>
+          
+              [ 변경 후 ] : p태그와 pre태그가 div.code-wrap 으로 감싸져있음
+                <p>
+                  <strong>q4</strong>
+                  경로
+                  <code>./question/q4_react.js</code>
+                </p>
+          
+                <div class="code-wrap">
+                <p>터미널</p>
+                <pre>
+                  <code class="language-bash"><div>  $ npm install
+              $ npm start
+            </div></code></pre>
+            </div>
+            */
+
+      html {
+        overflow-x: hidden;
+        padding-bottom: 30px;
+      }
+
+      body {
+        font-family: "Noto Sans KR", sans-serif;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      ul,
+      ol,
+      li,
+      dl,
+      dt,
+      dd,
+      p,
+      table {
+        margin: 0;
+        padding: 0;
+        color: #494949;
+        letter-spacing: -0.025rem;
+        box-sizing: border-box;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-weight: 600;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: inherit;
+      }
+
+      a img {
+        border: none;
+      }
+
+      img {
+        max-width: 100%;
+        vertical-align: middle;
+      }
+
+      ul li {
+        list-style: none;
+      }
+
+      p {
+        line-height: 1.8;
+      }
+      /* STYLE */
+
+      body {
+        padding: 0;
+        margin: 0;
+        line-height: 1.6;
+      }
+
+      h2 {
+        padding: 50px 0;
+        color: #ffffff;
+        font-size: 2rem;
+        text-align: center;
+        background: linear-gradient(45deg, #ed234b, #ff6c89, #ff6fb7);
+      }
+
+      h2::before {
+        content: "#";
+        display: inline-block;
+        margin-right: 5px;
+        color: #ff9db0;
+        font-weight: 300;
+        font-size: 2.2rem;
+      }
+
+      h3 {
+        position: relative;
+        margin: 30px 20px;
+        padding-bottom: 15px;
+        color: #303030;
+        font-size: 1.6rem;
+        border-bottom: 1px solid #ededed;
+      }
+
+      blockquote {
+        margin: 20px;
+        padding: 20px;
+        background: #f2f2f2;
+      }
+
+      strong {
+        display: block;
+        margin-top: 10px;
+      }
+
+      .code-wrap {
+        position: relative;
+        background: #2f303b;
+        margin: 15px 0 0 0;
+      }
+
+      .code-wrap > p {
+        position: absolute;
+        left: 0;
+        top: 0;
+        padding: 2px 15px;
+        font-size: 0.7rem;
+        color: #ffffff;
+        text-align: center;
+        background: #61c8cc;
+      }
+
+      code {
+        background: #ededed;
+      }
+
+      .language-html > div,
+      .language-css > div,
+      .language-scss > div,
+      .language-js > div {
+        color: #fff;
+        padding: 30px 20px;
+        background: #2f303b;
+      }
+
+      code.language-bash div {
+        margin-top: -20px;
+        padding: 30px 20px;
+        font-size: 1rem;
+        color: #ffffff;
+        background: #2f303b;
+        box-sizing: border-box;
+      }
+
+      code::after {
+        content: "";
+        display: block;
+      }
+
+      code.code-inlineBlock::after {
+        content: "";
+        display: inline-block;
+      }
+
+      .excute-text {
+        font-size: 0.8rem;
+        font-weight: bold;
+        color: #ed234b;
+      }
+      /* 좌, 우 여백 */
+
+      ol,
+      ul {
+        margin: 20px;
+        padding: 20px;
+        background: #f2f2f2;
+      }
+
+      ol li {
+        margin-left: 15px;
+      }
+
+      li {
+        font-size: 0.85rem;
+      }
+
+      h4,
+      h5,
+      h6,
+      p,
+      img,
+      pre {
+        padding: 0 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2 id="case27--카테고리-아이템-리스트">Case27 : category-item-list</h2>
+    <br />
+    <h3 id="케이스-주제">케이스 주제</h3>
+    <p>
+      <a href="https://www.figma.com/file/Cea2jP3BU6UhyMFLy1wIjS/%EC%BF%A0%ED%8C%A1%EC%8B%9C%EC%95%88%EC%9E%91%EC%97%85(%EC%88%98%EC%A0%95)?node-id=237%3A188486">Figma</a>에서 제공되는 수치를 확인해서 디자인과 카테고리 아이템 유닛 리스트 UI를 마크업합니다.<br />
+      아래의 요구사항을 참고해서 모든 브라우저에서 같은 디자인이 보이도록 해야합니다.
+    </p>
+    <br />
+    <h3 id="기능-요구사항">기능 요구사항</h3>
+    <ol>
+      <li>제공된 마크업 페이지를 사용하여 카테고리 아이템 유닛 리스트 스타일을 작성합니다.</li>
+      <li><code>styles/scss/_variable.scss</code>에 정의된 <code>$category-colors</code>에 따라 카테고리 아이템 유닛의 컬러가 적용되도록 합니다.</li>
+    </ol>
+    <br />
+    <h3 id="문제-및-기능-작동-이미지">문제 및 기능 작동 이미지</h3>
+    <p>
+      <a href="https://www.figma.com/file/Cea2jP3BU6UhyMFLy1wIjS/%EC%BF%A0%ED%8C%A1%EC%8B%9C%EC%95%88%EC%9E%91%EC%97%85(%EC%88%98%EC%A0%95)?node-id=237%3A188486">👩🏻‍🎨 Figma에서 확인하기</a><br />
+      <img src="./example.png" alt="example" />
+    </p>
+    <br />
+    <h3 id="주요-학습-키워드">주요 학습 키워드</h3>
+    <ul>
+      <li>디자인 가이드를 참고하여 스타일 작성하기</li>
+      <li>다양한 포지션 스타일 속성 적용하기</li>
+    </ul>
+    <br />
+    <h3 id="작성해주셔야-하는-question-파일경로">작성해주셔야 하는 question 파일경로</h3>
+    <p><code>./question/styles/question.scss</code></p>
+    <br />
+    <h3 id="실행-방법">실행 방법</h3>
+    <p>
+      경로
+      <code>./question/question.html</code>
+      question.html 열기
+    </p>
+  </body>
+</html>

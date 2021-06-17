@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Case24 : tailwind-css-footer - 출제자 해설</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css" />
+    <style>
+      /*
+      ==================== html => MD 작업 시, 꼭! 확인해주세요. ====================
+      1. Markdown All in One : Print current document to HTML 실행. (VScode extension)
+      2. 생성된 README.html에서 body 태그 안에 있는것들을 복사
+      3. README_OOO.html 로 파일명 수정 (OOO => Case 이름)
+      4. ! 자동완성을 통해 기본 html 폼을 만들고, body태그 안에 <2>의 내용 붙여넣기
+      5. font / code style에 관련된 <link>세줄과 <style> 태그 안에 있는 내용 붙여넣기
+      6. 상단 <title> 태그 안에 <h2> 텍스트 삽입
+      7. <code> tag가 줄바꿈 될 때, class명으로 "code-inlineBlock" 넣어주기
+      8. <img>태그 경로 변경해주기
+      [ EXAMPLE ]
+      [ 변경 전 ] : 절대경로로 되어있음
+      <img
+          width="600px"
+          src="file:////Users/ming/Desktop/ui-component/case2_InfiniteScroll/example_image.gif"
+        />
+      [ 변경 후 ] : 상대경로로 수정
+      <img
+          width="600px"
+          src="./example_image.gif"
+        />
+      8. html 내에 <h3>실행 방법 및 의존성 모듈 설치</h3> 하위 내용 아래와 같이 수정
+      [ EXAMPLE ]
+      [ 변경 전 ] : p에 className 없음
+        <p>
+          <strong>q1</strong>
+          경로
+          <code>./question/q1_js</code>
+          index.html 열기
+        </p>
+      [ 변경 후 ] : p에 className 있음
+        <p>
+          <strong>q1</strong>
+          경로
+          <code>./question/q1_js</code>
+          <p class="excute-text">index.html 열기</p>
+        </p>
+
+
+      [ 변경 전 ] : p태그와 pre태그가 div로 감싸져있지 않음
+        <p>
+          <strong>q4</strong>
+          경로
+          <code>./question/q4_react.js</code>
+        </p>
+
+        <p>터미널</p>
+        <pre><code class="language-bash"><div>  $ npm install
+        $ npm start
+      </div></code></pre>
+
+      [ 변경 후 ] : p태그와 pre태그가 div.code-wrap 으로 감싸져있음
+        <p>
+          <strong>q4</strong>
+          경로
+          <code>./question/q4_react.js</code>
+        </p>
+
+        <div class="code-wrap">
+        <p>터미널</p>
+        <pre>
+          <code class="language-bash"><div>  $ npm install
+      $ npm start
+    </div></code></pre>
+    </div>
+    */
+
+      html {
+        overflow-x: hidden;
+      }
+
+      body {
+        font-family: "Noto Sans KR", sans-serif;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      ul,
+      ol,
+      li,
+      dl,
+      dt,
+      dd,
+      p,
+      table {
+        margin: 0;
+        padding: 0;
+        color: #494949;
+        letter-spacing: -0.025rem;
+        box-sizing: border-box;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-weight: 600;
+      }
+
+      a {
+        text-decoration: inherit;
+        display: block;
+        color: #5e9cff;
+        text-decoration: underline;
+      }
+      a::before {
+        content: "📎";
+      }
+
+      a img {
+        border: none;
+      }
+
+      img {
+        max-width: 100%;
+        vertical-align: middle;
+      }
+
+      ul li {
+        list-style: none;
+      }
+
+      p {
+        line-height: 1.8;
+      }
+
+      /* STYLE */
+
+      body {
+        padding: 0;
+        margin: 0;
+        line-height: 1.6;
+      }
+
+      h2 {
+        padding: 50px 0;
+        color: #ffffff;
+        font-size: 2rem;
+        text-align: center;
+        background: linear-gradient(45deg, #ed234b, #ff6c89, #ff6fb7);
+      }
+
+      h2::before {
+        content: "#";
+        display: inline-block;
+        margin-right: 5px;
+        color: #ff9db0;
+        font-weight: 300;
+        font-size: 2.2rem;
+      }
+
+      h3 {
+        position: relative;
+        margin: 30px 20px;
+        padding-bottom: 15px;
+        color: #303030;
+        font-size: 1.6rem;
+        border-bottom: 1px solid #ededed;
+      }
+
+      blockquote {
+        margin: 20px;
+        padding: 20px;
+        background: #f2f2f2;
+      }
+
+      strong {
+        display: block;
+        margin-top: 10px;
+      }
+
+      .code-wrap {
+        position: relative;
+        background: #2f303b;
+        margin: 15px 0 0 0;
+      }
+
+      .code-wrap > p {
+        position: absolute;
+        left: 0;
+        top: 0;
+        padding: 2px 15px;
+        font-size: 0.7rem;
+        color: #ffffff;
+        text-align: center;
+        background: #61c8cc;
+      }
+
+      code {
+        background: #ededed;
+      }
+
+      .language-html > div,
+      .language-css > div,
+      .language-scss > div,
+      .language-js > div {
+        color: #fff;
+        padding: 30px 20px;
+        background: #2f303b;
+      }
+
+      code.language-bash div {
+        margin-top: -20px;
+        padding: 30px 20px;
+        font-size: 1rem;
+        color: #ffffff;
+        background: #2f303b;
+        box-sizing: border-box;
+      }
+
+      code::after {
+        content: "";
+        display: block;
+      }
+
+      code.code-inlineBlock::after {
+        content: "";
+        display: inline-block;
+      }
+
+      .excute-text {
+        font-size: 0.8rem;
+        font-weight: bold;
+        color: #ed234b;
+      }
+
+      /* 좌, 우 여백 */
+
+      ol,
+      ul {
+        margin: 20px;
+        padding: 20px;
+        background: #f2f2f2;
+      }
+
+      ol li {
+        margin-left: 15px;
+      }
+
+      li {
+        font-size: 0.85rem;
+      }
+      p {
+        font-size: 0.85rem;
+      }
+
+      h4,
+      h5,
+      h6,
+      p,
+      img,
+      pre {
+        padding: 0 20px;
+      }
+      h4 {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2 id="case24--tailwind-css-footer---출제자-해설">Case24 : tailwind-css-footer - 출제자 해설</h2>
+    <h3 id="html">HTML</h3>
+    <pre><code class="language-html"><div><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;X-UA-Compatible&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;IE=edge&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>01-tailwind-css-footer (solution)<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&amp;display=swap&quot;</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;styles/style.css&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">footer</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;flex flex-col md:flex-row md:justify-between bg-gray2 p-6 md:p-8&quot;</span>&gt;</span>
+      <span class="hljs-comment">&lt;!-- left side --&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- logo --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;mb-4&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;./images/logo.png&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;fastcampus logo&quot;</span> /&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- company info --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;text-gray6 text-sm&quot;</span>&gt;</span>
+          패스트캠퍼스(주)<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+          사업자번호 : 810-86-00658<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+          사무실 : 서울시 강남구 강남대로 364 미왕빌딩 15층
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+      <span class="hljs-comment">&lt;!-- right side --&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;flex flex-col md:flex-col-reverse md:justify-between&quot;</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- channel list --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;flex flex-row md:justify-end space-x-4 mt-8 mb-10 md:mb-0&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;./images/icon-facebook.png&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;facebook logo&quot;</span> /&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;./images/icon-instagram.png&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;instagram logo&quot;</span> /&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;./images/icon-youtube.png&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;youtube logo&quot;</span> /&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;./images/icon-naver.png&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;naver logo&quot;</span> /&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+
+        <span class="hljs-comment">&lt;!-- menu list --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;flex flex-col md:flex-row text-gray5 md:text-sm space-y-2 md:space-y-0 md:divide-x md:divide-gray3&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;menu-item&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>회사소개<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;menu-item&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>공지사항<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;menu-item&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>이용약관<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;menu-item&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>개인정보처리방침<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;menu-item&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>취소/환불 정책<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;menu-item&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>자주 묻는 질문<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</div></code></pre>
+    <h3 id="tailwind-css">TAILWIND CSS</h3>
+    <pre><code class="language-css"><div><span class="hljs-keyword">@tailwind</span> base;
+<span class="hljs-keyword">@tailwind</span> components;
+<span class="hljs-keyword">@tailwind</span> utilities;
+
+<span class="hljs-selector-tag">html</span>,
+<span class="hljs-selector-tag">body</span> {
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">14px</span>;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">20px</span>;
+}
+
+<span class="hljs-keyword">@screen</span> md {
+  <span class="hljs-selector-class">.menu-item</span> {
+    @apply leading-none px-2;
+  }
+}
+</div></code></pre>
+    <h3 id="-case24--tailwind-css-footer--문제와-같이-보면-좋은-팁">&lt; Case24 : tailwind css footer &gt; 문제와 같이 보면 좋은 팁</h3>
+    <p>다른강사님께서 해당 출제문제를 본 후, 같이 확인하면 좋겠다고 주신 의견입니다.</p>
+    <br />
+    <p>
+      Tailwind CSS는 Utility First 방식으로 Tailwind에서 제공하는 다양한 스타일을 선택하여<br />
+      사용자가 원하는 UI를 구현할 수 있도록 제공 합니다.
+    </p>
+    <p>
+      또한, Tailwind CSS는 사용자가 원하는 스타일을 구현할 때 손쉽게 스타일을 재정의 할 수 있어<br />
+      UI 스타일링을 구현할 때 확장 및 재사용, 생산성 등을 높일 수 있습니다.
+    </p>
+    <p>
+      2020년 11월 19일 Tailwind CSS는 v2를 출시하며 새로운 색상 팔레트, 다크 모드 지원 등을 포함시켰고<br />
+      2021년 4월 19일 현재 v2.1까지 업데이트 되었습니다.
+    </p>
+    <p>
+      Tailwind CSS는 2020 State of CSS에서 해가 지남에 따라 “다시 사용할 예정&quot;의 기술 중 최다 적용 기술에 뽑힐 만큼 만족도가 높습니다.
+      <br />
+      <br />
+    </p>
+    <p>
+      <img src="./example2.png" alt="example2" />
+      <br />
+      <a href="https://2020.stateofcss.com/ko-KR/">https://2020.stateofcss.com/ko-KR/</a>
+      <br />
+    </p>
+    <p>
+      Tailwind CSS를 사용하여 IE 11 미만 브라우저를 지원해야 한다면 v2를 사용해야 합니다.<br />
+      v2부터는 IE를 지원하지 않습니다. 만약 IE 11 미만 브라우저를 지원해야 하는 경우 Tailwind CSS v1.9를 사용해야 합니다.
+    </p>
+    <p>
+      Tailwind CSS 프로젝트에 PostCSS를 프리 프로세서로 활용하면 보다 빠른 빌드 프로세스<br />
+      (CSS를 여러 도구로 구문 분석하고 처리할 필요 없이 PostCSS만으로 처리해 속도 향상)와 함께<br />
+      별도의 처리 (Tailwind CSS는 자체적인 비표준 키워드를 사용하므로 다른 도구 사용시 성가신 오류 발생) 없이 사용할 수 있다는 이점이 있습니다.
+    </p>
+    <p>
+      성능을 위해 사용하지 않는 CSS를 프로덕션 빌드 시 제거하여야 합니다.<br />
+      예를 들어 Tailwind CSS는 프로젝트에서 사용 중인 모든 중단점에서 <br />
+      여백을 적용하려는 요소의 모든 면(위,아래,양 옆)에 대해 간격, 스케일의 모든 크기에 대한 유틸리티를 생성합니다.<br />
+      이로 인해 모두 사용하지 않을 수백 가지의 다양한 조합이 생성됩니다.
+    </p>
+    <p>그러므로 배포를 위한 빌드 과정에서 반드시 Tailwind CSS의 purge 옵션을 사용해 사용 하지 않는 스타일을 트리 쉐이킹(사용하지 않는 스타일 제거)하고 최종 빌드 크기를 최적화 해야 합니다.</p>
+    <p>Visual Studio Code에서 Tailwind CSS를 사용할 경우 확장 프로그램을 설치하여 활용하는 것이 도움이 됩니다.</p>
+    <p>
+      <a href="https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss">https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss</a>
+      <a href="https://marketplace.visualstudio.com/items?itemName=austenc.tailwind-docs">https://marketplace.visualstudio.com/items?itemName=austenc.tailwind-docs</a>
+      <a href="https://marketplace.visualstudio.com/items?itemName=heybourn.headwind">https://marketplace.visualstudio.com/items?itemName=heybourn.headwind</a>
+      <br />
+      좀 더 자세하게 Tailwind CSS에 대해 학습하실 경우 공식 홈페이지에 있는<br />
+      Documentation을 참고하시거나 Youtube의 다양한 강좌를 시청하시길 권해드립니다.
+    </p>
+    <br />
+    <p>
+      [Tailwind CSS 문서 일부 번역본]
+      <a href="https://yamoo9.gitbook.io/tailwindcss/core-concept/utility-first">https://yamoo9.gitbook.io/tailwindcss/core-concept/utility-first</a>
+      <br />
+      [공식 홈페이지]
+      <a href="https://tailwindcss.com/docs">https://tailwindcss.com/docs</a>
+      <br />
+      [유튜브 강좌]
+      <a href="https://www.youtube.com/watch?v=j_5-LISy9Qg">https://www.youtube.com/watch?v=j_5-LISy9Qg</a>
+      <a href="https://www.youtube.com/watch?v=4wGmylafgM4">https://www.youtube.com/watch?v=4wGmylafgM4</a>
+    </p>
+  </body>
+</html>

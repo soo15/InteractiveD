@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Case27 : category-item-list - 출제자 해설</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css"
+    />
+    <style>
+      /*
+              ==================== html => MD 작업 시, 꼭! 확인해주세요. ====================
+              1. Markdown All in One : Print current document to HTML 실행. (VScode extension)
+              2. 생성된 README.html에서 body 태그 안에 있는것들을 복사
+              3. 루트 폴더에 README_OOO.md 생성 (OOO : Case 이름)
+              4. ! 자동완성을 통해 기본 html 폼을 만들고, body태그 안에 <2>의 내용 붙여넣기
+              5. font / code style에 관련된 <link>세줄과 <style> 태그 안에 있는 내용 붙여넣기
+              6. 상단 <title> 태그 안에 <h2> 텍스트 삽입
+              7. <code> tag가 줄바꿈 될 때, class명으로 "code-inlineBlock" 넣어주기
+              8. <img>태그 경로 변경해주기
+              [ EXAMPLE ]
+              [ 변경 전 ] : 절대경로로 되어있음
+              <img
+                  width="600px"
+                  src="file:////Users/ming/Desktop/ui-component/case2_InfiniteScroll/example_image.gif"
+                />
+              [ 변경 후 ] : 상대경로로 수정
+              <img
+                  width="600px"
+                  src="./example_image.gif"
+                />
+              8. html 내에 <h3>실행 방법 및 의존성 모듈 설치</h3> 하위 내용 아래와 같이 수정
+              [ EXAMPLE ]
+              [ 변경 전 ] : p에 className 없음
+                <p>
+                  <strong>q1</strong>
+                  경로
+                  <code>./question/q1_js</code>
+                  index.html 열기
+                </p>
+              [ 변경 후 ] : p에 className 있음
+                <p>
+                  <strong>q1</strong>
+                  경로
+                  <code>./question/q1_js</code>
+                  <p class="excute-text">index.html 열기</p>
+                </p>
+          
+          
+              [ 변경 전 ] : p태그와 pre태그가 div로 감싸져있지 않음
+                <p>
+                  <strong>q4</strong>
+                  경로
+                  <code>./question/q4_react.js</code>
+                </p>
+          
+                <p>터미널</p>
+                <pre><code class="language-bash"><div>  $ npm install
+                $ npm start
+              </div></code></pre>
+          
+              [ 변경 후 ] : p태그와 pre태그가 div.code-wrap 으로 감싸져있음
+                <p>
+                  <strong>q4</strong>
+                  경로
+                  <code>./question/q4_react.js</code>
+                </p>
+          
+                <div class="code-wrap">
+                <p>터미널</p>
+                <pre>
+                  <code class="language-bash"><div>  $ npm install
+              $ npm start
+            </div></code></pre>
+            </div>
+            */
+
+      html {
+        overflow-x: hidden;
+        padding-bottom: 30px;
+      }
+
+      body {
+        font-family: 'Noto Sans KR', sans-serif;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      ul,
+      ol,
+      li,
+      dl,
+      dt,
+      dd,
+      p,
+      table {
+        margin: 0;
+        padding: 0;
+        color: #494949;
+        letter-spacing: -0.025rem;
+        box-sizing: border-box;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-weight: 600;
+      }
+
+      a {
+        color: blue;
+      }
+
+      a img {
+        border: none;
+      }
+
+      img {
+        max-width: 100%;
+        vertical-align: middle;
+      }
+      img:nth-of-type(1) {
+        max-width: 50%;
+        display: block;
+        margin: 30px 0;
+      }
+
+      ul li {
+        list-style: none;
+      }
+
+      ul > li > ul {
+        margin: 0;
+        padding: 15px;
+      }
+      ul > li > ul > li {
+        list-style: circle;
+        margin-left: 25px;
+      }
+
+      ol > li > ul {
+        margin: 0;
+        padding: 15px;
+      }
+      ol > li > ul > li {
+        list-style: circle;
+        margin-left: 25px;
+      }
+
+      p {
+        line-height: 1.8;
+      }
+      /* STYLE */
+
+      body {
+        padding: 0;
+        margin: 0;
+        line-height: 1.6;
+      }
+
+      h2 {
+        padding: 50px 0;
+        color: #ffffff;
+        font-size: 2rem;
+        text-align: center;
+        background: linear-gradient(45deg, #ed234b, #ff6c89, #ff6fb7);
+      }
+
+      h2::before {
+        content: '#';
+        display: inline-block;
+        margin-right: 5px;
+        color: #ff9db0;
+        font-weight: 300;
+        font-size: 2.2rem;
+      }
+
+      h3 {
+        position: relative;
+        margin: 30px 20px;
+        padding-bottom: 15px;
+        color: #303030;
+        font-size: 1.6rem;
+        border-bottom: 1px solid #ededed;
+      }
+
+      blockquote {
+        margin: 20px;
+        padding: 20px;
+        background: #f2f2f2;
+      }
+
+      strong {
+        display: block;
+        margin-top: 10px;
+      }
+
+      .code-wrap {
+        position: relative;
+        background: #2f303b;
+        margin: 15px 0 0 0;
+      }
+
+      .code-wrap > p {
+        position: absolute;
+        left: 0;
+        top: 0;
+        padding: 2px 15px;
+        font-size: 0.7rem;
+        color: #ffffff;
+        text-align: center;
+        background: #61c8cc;
+      }
+
+      code {
+        background: #ededed;
+      }
+
+      .language-html > div,
+      .language-css > div,
+      .language-scss > div,
+      .language-javascript > div,
+      .language-typescript > div {
+        color: #fff;
+        padding: 30px 20px;
+        background: #2f303b;
+      }
+
+
+      code.language-bash div {
+        margin-top: -20px;
+        padding: 30px 20px;
+        font-size: 1rem;
+        color: #ffffff;
+        background: #2f303b;
+        box-sizing: border-box;
+      }
+
+      code::after {
+        content: '';
+        display: block;
+      }
+
+      code.code-inlineBlock::after {
+        content: '';
+        display: inline-block;
+      }
+
+      .excute-text {
+        font-size: 0.8rem;
+        font-weight: bold;
+        color: #ed234b;
+      }
+      /* 좌, 우 여백 */
+
+      ol,
+      ul {
+        margin: 20px;
+        padding: 20px;
+        background: #f2f2f2;
+      }
+
+      ol li {
+        margin-left: 15px;
+      }
+
+      li {
+        font-size: 0.85rem;
+      }
+
+      h4,
+      h5,
+      h6,
+      p,
+      img,
+      pre {
+        padding: 0 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2 id="case27--category-item-list---출제자-해설">Case27 : category-item-list - 출제자 해설</h2>
+    <pre><code class="language-html"><div><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ko&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;X-UA-Compatible&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;IE=edge&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>카테고리별 추천 광고 상품<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700<span class="hljs-symbol">&amp;amp;</span>display=swap&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.2.0/css/glide.core.min.css&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;styles/solution.css&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">defer</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.2.0/glide.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">defer</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;js/main.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;container&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;section__title&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;section__titleCaption&quot;</span>&gt;</span>HOT! TREND<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>카테고리별 <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>추천 광고 상품<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;category__unit supplies&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;category__detail&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;category__title&quot;</span>&gt;</span>생활용품<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">dl</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;category__keywords&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">dt</span>&gt;</span>HOT키워드<span class="hljs-tag">&lt;/<span class="hljs-name">dt</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">dd</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>#바디오일<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>#두피/비듬샴푸<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>#유기농생리대<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>#액체세제<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>#뽑아쓰는 키친타올<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">dd</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">dl</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;category__banner&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;suppliesCarousel&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;glid__track&quot;</span> <span class="hljs-attr">data-glide-el</span>=<span class="hljs-string">&quot;track&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;category__bannerList glide__slides&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;category__bannerItem glide__slide&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>
+                  &gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/category_banner.png&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;배너이미지&quot;</span> /&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;category__bannerTitle&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>탈모케어 최대 74%<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>즉시 할인에 쿠폰 할인까지!<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>
+                &gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;category__bannerItem glide__slide&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>
+                  &gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/category_banner.png&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;배너이미지&quot;</span> /&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;category__bannerTitle&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>텍스트가 너비이 넘어가더라도 UI가 깨지지 않게 해주세요.<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>텍스트가 너비이 넘어가더라도 UI가 깨지지 않게 해주세요.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>
+                &gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;glide__bullet&quot;</span> <span class="hljs-attr">data-glide-el</span>=<span class="hljs-string">&quot;controls[nav]&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>2<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;category__productList&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productList&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>
+                &gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__thumbnail&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/productItem.png&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;배너이미지&quot;</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__title&quot;</span>&gt;</span> 코디 아름드리 Size Up 키친타올 250매, 12롤, 1팩 텍스트가 너비이 넘어가더라도 UI가 깨지지 않게 해주세요.<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__price&quot;</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>16,050<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>원 <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/flag_sm_rocketDelivery.svg&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;로켓배송&quot;</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__price&quot;</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>14,258<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>원 <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/flag_sm_rocketFresh.svg&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;로켓프레시&quot;</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>
+              &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>
+                &gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__thumbnail&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/productItem.png&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;배너이미지&quot;</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__title&quot;</span>&gt;</span> 코디 아름드리 Size Up 키친타올 250매, 12롤, 1팩 텍스트가 너비이 넘어가더라도 UI가 깨지지 않게 해주세요.<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__price&quot;</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>16,050<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>원 <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/flag_sm_rocketDelivery.svg&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;로켓배송&quot;</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__price&quot;</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>14,258<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>원 <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/flag_sm_rocketFresh.svg&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;로켓프레시&quot;</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>
+              &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>
+                &gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__thumbnail&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/productItem.png&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;배너이미지&quot;</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__title&quot;</span>&gt;</span> 코디 아름드리 Size Up 키친타올 250매, 12롤, 1팩 텍스트가 너비이 넘어가더라도 UI가 깨지지 않게 해주세요.<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__price&quot;</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>16,050<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>원 <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/flag_sm_rocketDelivery.svg&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;로켓배송&quot;</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__price&quot;</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>14,258<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>원 <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/flag_sm_rocketFresh.svg&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;로켓프레시&quot;</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>
+              &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>
+                &gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__thumbnail&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/productItem.png&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;배너이미지&quot;</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__title&quot;</span>&gt;</span> 코디 아름드리 Size Up 키친타올 250매, 12롤, 1팩 텍스트가 너비이 넘어가더라도 UI가 깨지지 않게 해주세요.<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__price&quot;</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>16,050<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>원 <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/flag_sm_rocketDelivery.svg&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;로켓배송&quot;</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__price&quot;</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>14,258<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>원 <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/flag_sm_rocketFresh.svg&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;로켓프레시&quot;</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>
+              &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>
+                &gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__thumbnail&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/productItem.png&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;배너이미지&quot;</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__title&quot;</span>&gt;</span> 코디 아름드리 Size Up 키친타올 250매, 12롤, 1팩 텍스트가 너비이 넘어가더라도 UI가 깨지지 않게 해주세요.<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__price&quot;</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>16,050<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>원 <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/flag_sm_rocketDelivery.svg&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;로켓배송&quot;</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__price&quot;</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>14,258<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>원 <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/flag_sm_rocketFresh.svg&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;로켓프레시&quot;</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>
+              &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>
+                &gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__thumbnail&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/productItem.png&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;배너이미지&quot;</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__title&quot;</span>&gt;</span> 코디 아름드리 Size Up 키친타올 250매, 12롤, 1팩 텍스트가 너비이 넘어가더라도 UI가 깨지지 않게 해주세요.<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__price&quot;</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>16,050<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>원 <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/flag_sm_rocketDelivery.svg&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;로켓배송&quot;</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__price&quot;</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>14,258<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>원 <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/flag_sm_rocketFresh.svg&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;로켓프레시&quot;</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>
+              &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;category__unit kitchen&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;category__detail&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;category__title&quot;</span>&gt;</span>주방용품<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">dl</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;category__keywords&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">dt</span>&gt;</span>HOT키워드<span class="hljs-tag">&lt;/<span class="hljs-name">dt</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">dd</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>#니트릴장갑<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>#시리얼디스펜서<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>#와플팬<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>#텀블러<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>#양념통<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>#수세미<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">dd</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">dl</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;category__banner&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;kitchenCarousel&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;glid__track&quot;</span> <span class="hljs-attr">data-glide-el</span>=<span class="hljs-string">&quot;track&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;category__bannerList glide__slides&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;category__bannerItem glide__slide&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>
+                  &gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/category_banner2.png&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;배너이미지&quot;</span> /&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;category__bannerTitle&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>배너 타이틀<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>배너 서브타이틀<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>
+                &gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;category__bannerItem glide__slide&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>
+                  &gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/category_banner2.png&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;배너이미지&quot;</span> /&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;category__bannerTitle&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>배너 타이틀<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>배너 서브타이틀<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>
+                &gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;category__bannerItem glide__slide&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>
+                  &gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/category_banner2.png&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;배너이미지&quot;</span> /&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;category__bannerTitle&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>배너 타이틀<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>배너 서브타이틀<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>
+                &gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;glide__bullet&quot;</span> <span class="hljs-attr">data-glide-el</span>=<span class="hljs-string">&quot;controls[nav]&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>2<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sr-only&quot;</span>&gt;</span>3<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;category__productList&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productList&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>
+                &gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__thumbnail&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/productItem.png&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;배너이미지&quot;</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__title&quot;</span>&gt;</span> 코디 아름드리 Size Up 키친타올 250매, 12롤, 1팩 텍스트가 너비이 넘어가더라도 UI가 깨지지 않게 해주세요.<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__price&quot;</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>16,050<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>원 <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/flag_sm_rocketDelivery.svg&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;로켓배송&quot;</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__price&quot;</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>14,258<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>원 <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/flag_sm_rocketFresh.svg&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;로켓프레시&quot;</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>
+              &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>
+                &gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__thumbnail&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/productItem.png&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;배너이미지&quot;</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__title&quot;</span>&gt;</span> 코디 아름드리 Size Up 키친타올 250매, 12롤, 1팩 텍스트가 너비이 넘어가더라도 UI가 깨지지 않게 해주세요.<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__price&quot;</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>16,050<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>원 <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/flag_sm_rocketDelivery.svg&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;로켓배송&quot;</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__price&quot;</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>14,258<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>원 <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/flag_sm_rocketFresh.svg&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;로켓프레시&quot;</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>
+              &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>
+                &gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__thumbnail&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/productItem.png&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;배너이미지&quot;</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__title&quot;</span>&gt;</span> 코디 아름드리 Size Up 키친타올 250매, 12롤, 1팩 텍스트가 너비이 넘어가더라도 UI가 깨지지 않게 해주세요.<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__price&quot;</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>16,050<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>원 <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/flag_sm_rocketDelivery.svg&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;로켓배송&quot;</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__price&quot;</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>14,258<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>원 <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/flag_sm_rocketFresh.svg&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;로켓프레시&quot;</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>
+              &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>
+                &gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__thumbnail&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/productItem.png&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;배너이미지&quot;</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__title&quot;</span>&gt;</span> 코디 아름드리 Size Up 키친타올 250매, 12롤, 1팩 텍스트가 너비이 넘어가더라도 UI가 깨지지 않게 해주세요.<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__price&quot;</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>16,050<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>원 <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/flag_sm_rocketDelivery.svg&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;로켓배송&quot;</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__price&quot;</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>14,258<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>원 <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/flag_sm_rocketFresh.svg&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;로켓프레시&quot;</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>
+              &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>
+                &gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__thumbnail&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/productItem.png&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;배너이미지&quot;</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__title&quot;</span>&gt;</span> 코디 아름드리 Size Up 키친타올 250매, 12롤, 1팩 텍스트가 너비이 넘어가더라도 UI가 깨지지 않게 해주세요.<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__price&quot;</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>16,050<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>원 <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/flag_sm_rocketDelivery.svg&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;로켓배송&quot;</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__price&quot;</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>14,258<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>원 <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/flag_sm_rocketFresh.svg&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;로켓프레시&quot;</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>
+              &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>
+                &gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__thumbnail&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/productItem.png&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;배너이미지&quot;</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__title&quot;</span>&gt;</span> 코디 아름드리 Size Up 키친타올 250매, 12롤, 1팩 텍스트가 너비이 넘어가더라도 UI가 깨지지 않게 해주세요.<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__price&quot;</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>16,050<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>원 <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/flag_sm_rocketDelivery.svg&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;로켓배송&quot;</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;productItem__price&quot;</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>14,258<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>원 <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;images/flag_sm_rocketFresh.svg&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;로켓프레시&quot;</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>
+              &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</div></code></pre>
+    <pre><code class="language-scss"><div><span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;scss/variables&quot;</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;scss/mixins&quot;</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;scss/reset&quot;</span>;
+
+<span class="hljs-comment">// Layout</span>
+<span class="hljs-comment">//––––––––––––––––––––––––––––––––––––––––––––––––––</span>
+<span class="hljs-selector-tag">body</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-variable">$gray1</span>;
+  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">&quot;Noto Sans KR&quot;</span>, sans-serif;
+}
+
+<span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">1020px</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;
+  <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">100px</span>;
+}
+
+<span class="hljs-selector-class">.section__title</span> {
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">76px</span> <span class="hljs-number">0</span> <span class="hljs-number">22px</span>;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">24px</span>;
+  <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">600</span>;
+
+  <span class="hljs-selector-class">.section__titleCaption</span> {
+    <span class="hljs-attribute">display</span>: block;
+    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">10px</span>;
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">16px</span>;
+  }
+
+  <span class="hljs-selector-tag">em</span> {
+    <span class="hljs-attribute">color</span>: <span class="hljs-variable">$primary</span>;
+  }
+}
+
+<span class="hljs-comment">// A11y</span>
+<span class="hljs-comment">//––––––––––––––––––––––––––––––––––––––––––––––––––</span>
+<span class="hljs-selector-class">.sr-only</span> {
+  <span class="hljs-attribute">border</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">clip</span>: rect(<span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span>);
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">1px</span>;
+  <span class="hljs-attribute">margin</span>: -<span class="hljs-number">1px</span>;
+  <span class="hljs-attribute">overflow</span>: hidden;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">position</span>: absolute;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">1px</span>;
+}
+
+<span class="hljs-comment">// Carousel</span>
+<span class="hljs-comment">//––––––––––––––––––––––––––––––––––––––––––––––––––</span>
+<span class="hljs-selector-class">.glide__bullet</span> {
+  <span class="hljs-attribute">display</span>: flex;
+  <span class="hljs-attribute">justify-content</span>: center;
+  <span class="hljs-attribute">z-index</span>: <span class="hljs-number">1</span>;
+  <span class="hljs-attribute">position</span>: absolute;
+  <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">right</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">bottom</span>: <span class="hljs-number">19px</span>;
+
+  <span class="hljs-selector-tag">li</span> {
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">9px</span>;
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">9px</span>;
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">4px</span>;
+    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">50%</span>;
+    <span class="hljs-attribute">background-color</span>: <span class="hljs-variable">$gray5</span>;
+    <span class="hljs-attribute">list-style</span>: none;
+
+    &amp;<span class="hljs-selector-class">.glide__bullet--active</span> {
+      <span class="hljs-attribute">background-color</span>: <span class="hljs-variable">$gray4</span>;
+    }
+  }
+}
+
+<span class="hljs-comment">// write your code below.</span>
+<span class="hljs-comment">//––––––––––––––––––––––––––––––––––––––––––––––––––</span>
+
+<span class="hljs-selector-class">.category__unit</span> {
+  <span class="hljs-attribute">display</span>: flex;
+  <span class="hljs-attribute">border-style</span>: solid;
+  <span class="hljs-attribute">border-top-width</span>: <span class="hljs-number">1px</span>;
+  <span class="hljs-attribute">border-bottom-width</span>: <span class="hljs-number">1px</span>;
+
+  &amp;<span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-pseudo">:first-of-type</span>) {
+    <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">30px</span>;
+  }
+}
+
+<span class="hljs-keyword">@each</span> <span class="hljs-variable">$name</span>, <span class="hljs-variable">$color</span> in <span class="hljs-variable">$category-colors</span> {
+  <span class="hljs-selector-class">.category__unit</span>.#{<span class="hljs-variable">$name</span>} {
+    <span class="hljs-attribute">border-color</span>: <span class="hljs-variable">$color</span>;
+
+    <span class="hljs-selector-class">.category__title</span> {
+      <span class="hljs-attribute">color</span>: <span class="hljs-variable">$color</span>;
+    }
+    <span class="hljs-selector-class">.category__keywords</span> {
+      <span class="hljs-attribute">color</span>: <span class="hljs-variable">$color</span>;
+      <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span> {
+        <span class="hljs-attribute">border-color</span>: <span class="hljs-variable">$color</span>;
+        <span class="hljs-attribute">background-color</span>: <span class="hljs-variable">$color</span>;
+      }
+    }
+    <span class="hljs-selector-class">.category__bannerTitle</span> {
+      <span class="hljs-attribute">background-color</span>: <span class="hljs-variable">$color</span>;
+    }
+  }
+}
+
+<span class="hljs-selector-class">.category__detail</span> {
+  <span class="hljs-attribute">display</span>: flex;
+  <span class="hljs-attribute">flex-direction</span>: column;
+  <span class="hljs-attribute">justify-content</span>: space-between;
+  <span class="hljs-attribute">flex</span>: none;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">190px</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">29px</span> <span class="hljs-number">0</span> <span class="hljs-number">19px</span>;
+}
+
+<span class="hljs-selector-class">.category__title</span> {
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">24px</span>;
+}
+
+<span class="hljs-selector-class">.category__keywords</span> {
+  <span class="hljs-selector-tag">dt</span> {
+    <span class="hljs-attribute">color</span>: <span class="hljs-variable">$gray1</span>;
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">18px</span>;
+  }
+  <span class="hljs-selector-tag">dd</span> {
+    <span class="hljs-attribute">display</span>: flex;
+    <span class="hljs-attribute">flex-direction</span>: column;
+    <span class="hljs-attribute">align-items</span>: flex-start;
+    <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">10px</span>;
+  }
+  <span class="hljs-selector-tag">a</span> {
+    <span class="hljs-attribute">display</span>: block;
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">6px</span> <span class="hljs-number">10px</span>;
+    <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-variable">$gray5</span>;
+    <span class="hljs-attribute">color</span>: inherit;
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">12px</span>;
+    <span class="hljs-attribute">text-decoration</span>: none;
+    <span class="hljs-comment">/* 
+      color: inherit 에 대한 설명이 영상에서 빠져있어 추가합니다
+      color:inherit 는 상위(부모)엘리먼트의 에서 정해준 색상을 그대로 상속받는다는 의미입니다. 
+      .category__keywords {
+        color: $color;
+      }
+      에서 정해준 color 를 그대로 상속받습니다.
+    */</span>
+    &amp;<span class="hljs-selector-pseudo">:hover</span> {
+      <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;
+    }
+    &amp; + <span class="hljs-selector-tag">a</span> {
+      <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">5px</span>;
+    }
+  }
+}
+<span class="hljs-selector-class">.category__banner</span> {
+  <span class="hljs-attribute">flex</span>: none;
+  <span class="hljs-attribute">overflow</span>: hidden;
+  <span class="hljs-attribute">position</span>: relative;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">290px</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">border-left</span>: <span class="hljs-number">1px</span> solid <span class="hljs-variable">$gray5</span>;
+  <span class="hljs-attribute">border-right</span>: <span class="hljs-number">1px</span> solid <span class="hljs-variable">$gray5</span>;
+}
+<span class="hljs-selector-class">.category__bannerItem</span> {
+  <span class="hljs-attribute">position</span>: relative;
+  <span class="hljs-selector-tag">img</span> {
+    <span class="hljs-attribute">max-width</span>: <span class="hljs-number">100%</span>;
+    <span class="hljs-attribute">max-height</span>: <span class="hljs-number">100%</span>;
+  }
+}
+<span class="hljs-selector-class">.category__bannerTitle</span> {
+  <span class="hljs-attribute">display</span>: flex;
+  <span class="hljs-attribute">flex-direction</span>: column;
+  <span class="hljs-attribute">justify-content</span>: center;
+  <span class="hljs-attribute">align-items</span>: center;
+  <span class="hljs-attribute">position</span>: absolute;
+  <span class="hljs-attribute">z-index</span>: <span class="hljs-number">1</span>;
+  <span class="hljs-attribute">bottom</span>: <span class="hljs-number">47px</span>;
+  <span class="hljs-attribute">left</span>: <span class="hljs-number">30px</span>;
+  <span class="hljs-attribute">right</span>: <span class="hljs-number">30px</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">72px</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">10px</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;
+
+  <span class="hljs-selector-tag">strong</span> {
+    <span class="hljs-keyword">@include</span> ellipsis();
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">18px</span>;
+  }
+  <span class="hljs-selector-tag">p</span> {
+    <span class="hljs-keyword">@include</span> ellipsis();
+    <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">5px</span>;
+  }
+}
+<span class="hljs-selector-class">.category__productList</span> {
+  <span class="hljs-attribute">flex</span>: auto;
+  <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">10px</span>;
+}
+<span class="hljs-selector-class">.productList</span> {
+  <span class="hljs-attribute">display</span>: grid;
+  grid: repeat(<span class="hljs-number">2</span>, <span class="hljs-number">1</span>fr) / repeat(<span class="hljs-number">3</span>, <span class="hljs-number">1</span>fr);
+  <span class="hljs-attribute">column-gap</span>: <span class="hljs-number">10px</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">position</span>: relative;
+
+  <span class="hljs-comment">// [해설] `::`는 Pseudo-elements에 사용합니다. (e.g. ::before, ::after, ...)</span>
+  <span class="hljs-comment">// Pseudo-classes는 엘리먼트의 특정 부분 엘리먼트를 선택하기 위한 키워드입니다.</span>
+  &amp;<span class="hljs-selector-pseudo">::before</span> {
+    <span class="hljs-attribute">content</span>: <span class="hljs-string">&quot;&quot;</span>;
+    <span class="hljs-attribute">position</span>: absolute;
+    <span class="hljs-attribute">top</span>: <span class="hljs-number">50%</span>;
+    <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">right</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">overflow</span>: hidden;
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">1px</span>;
+    <span class="hljs-attribute">border-top</span>: <span class="hljs-number">1px</span> solid <span class="hljs-variable">$gray5</span>;
+  }
+}
+<span class="hljs-selector-class">.productItem</span> &gt; <span class="hljs-selector-tag">a</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-variable">$gray1</span>;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">14px</span>;
+  <span class="hljs-attribute">text-decoration</span>: none;
+
+  <span class="hljs-comment">// [참고해설] `:`는 Pseudo-classes에 사용합니다. (e.g. :hover, :visited, ...)</span>
+  <span class="hljs-comment">// Pseudo-classes는 선택 가능한 엘리먼트의 특정한 상태를 선택하기 위한 키워드입니다.</span>
+  <span class="hljs-comment">// &amp;:hover {</span>
+  <span class="hljs-comment">//   .productItem__title {</span>
+  <span class="hljs-comment">//     text-decoration: underline;</span>
+  <span class="hljs-comment">//   }</span>
+  <span class="hljs-comment">// }</span>
+}
+<span class="hljs-selector-class">.productItem__thumbnail</span> <span class="hljs-selector-tag">img</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">170px</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">168px</span>;
+}
+<span class="hljs-selector-class">.productItem__title</span> {
+  <span class="hljs-keyword">@include</span> ellipsis(<span class="hljs-number">2</span>);
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">19px</span>;
+}
+<span class="hljs-selector-class">.productItem__price</span> {
+  <span class="hljs-attribute">display</span>: flex;
+  <span class="hljs-attribute">align-items</span>: center;
+
+  <span class="hljs-selector-tag">strong</span> {
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">18px</span>;
+    <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">700</span>;
+    <span class="hljs-attribute">line-height</span>: <span class="hljs-number">25px</span>;
+  }
+}
+</div></code></pre>
+  </body>
+</html>
