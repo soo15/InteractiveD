@@ -1,0 +1,238 @@
+/* Basics */
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Line */
+
+.line {
+    border-bottom: 1px dashed grey;
+    margin: 0 0 1vh;
+}
+
+/* Start of Column CSS */
+#rellax_container {
+	clear:left;
+	float:left;
+  margin:0 auto;
+	width:100%;
+  max-width: 1600px;
+	overflow:hidden;
+	background:#fafafa; /* column right background colour */
+}
+#rellax_content {
+	float:left;
+	width:100%;
+	position:relative;
+	right:40%;
+	background:#fff; /* column left background colour */
+}
+@media (max-width: 768px) { #rellax_content { width:100%;right: 0%;left:0%;} }
+#rellax_content_inverse {
+	float:left;
+	width:100%;
+	position:relative;
+	right:50%;
+	background:#fff; /* column left background colour */
+}
+@media (max-width: 768px) { #rellax_content_inverse { width:100%;right: 0%;left:0%;} }
+#col_left {
+	float:left;
+	width:46%;
+	position:relative;
+	left:52%;
+	overflow:hidden;
+}
+@media (max-width: 768px) { #col_left { width:100%;right: 0%;left:2%;} }
+#col_left_inverse {
+	float:left;
+	width:46%;
+	position:relative;
+	left:65%;
+	overflow:hidden;
+}
+@media (max-width: 768px) { #col_left_inverse { width:100%;right: 0%;left:2%;} }
+#col_right {
+	float:left;
+	width:37%;
+	position:relative;
+	left:56%;
+	overflow:hidden;
+  height: 100vh;
+  background: #f2fafa;
+  padding-left: 0%;
+}
+@media (max-width: 768px) { #col_right { width:100%;right: 0%;left:0%;text-align: center;} }
+#col_right_inverse {
+	float:left;
+	width:37%;
+	position:relative;
+	left:62%;
+	overflow:hidden;
+  height: 100vh;
+  background: #f2fafa;
+  padding-left: 0%;
+}
+@media (max-width: 768px) { #col_right_inverse { width:100%;right: 0%;left:0%;text-align: center;} }
+#col_left img {
+  max-width: 50%;
+  display: block;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 20px rgba(0,0,0,0.2), 5px 10px 40px rgba(0,0,0,0.2);
+          box-shadow: 0 0 20px rgba(0,0,0,0.2), 5px 10px 40px rgba(0,0,0,0.2);
+  position: relative;
+  left: 3%;
+}
+#col_left img.second {
+  left: 30%;
+}
+#col_left img.third {
+  left: 10%;
+}
+#col_left img.forty {
+  left: 30%;
+}
+#col_left img.fourth {
+  left: 25%;
+  margin-bottom: 10rem;
+}
+#col_left img.five {
+  left: 15%;
+  margin-top: 18%;
+  margin-bottom: 7%;
+}
+#col_left h1 {
+  color: #cad5d6;
+  font-size: 5.9vw;
+  max-width: 24%;
+  position: absolute;
+}
+#col_left h1.right {
+  padding-left: 35%;
+  padding-top: 69%;
+}
+#rellax_container h3 {
+padding-top: 30%;
+font-size: 9px;
+line-height: 1.11111111em;
+letter-spacing: .33333333em;
+font-weight: 500;
+text-transform: uppercase;
+color: rgba(0, 0, 0, .5);
+}
+
+#rellax_container h2 {
+font-size: 24px;
+line-height: 1.63636364em;
+letter-spacing: .20454545em;
+}
+
+#rellax_container p {
+font-size: 15px;
+line-height: 1.85714286em;
+color: #767676; 
+}
+.leftbutton {
+color:#000;
+background-color:transparent;
+cursor: pointer;
+display: inline-block;
+font-size: 11px;
+font-weight: 500;
+letter-spacing: .091em;
+line-height: 1em;
+border-style: solid;
+border-width: 1.1px;
+border-radius: 0;
+padding: 1.9em 3em;
+text-align: center;
+}
+
+.rightbutton {
+color:#000;
+background-color:transparent;
+cursor: pointer;
+display: inline-block;
+font-size: 11px;
+font-weight: 500;
+letter-spacing: .091em;
+line-height: 1em;
+text-align: center;
+border-bottom: 1px solid #000;
+margin: 1em 1.6em;
+padding: .8em 0;
+}
+
+#col_right a {
+text-decoration:none;
+text-transform: uppercase;
+}
+
+#col_right_inverse a {
+text-decoration:none;
+text-transform: uppercase;
+}
+
+.leftbutton:hover {
+color: #fff;
+background-color: #000;
+}
+
+#col_left_inverse img {
+  max-width: 50%;
+  display: block;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 20px rgba(0,0,0,0.2), 5px 10px 40px rgba(0,0,0,0.2);
+          box-shadow: 0 0 20px rgba(0,0,0,0.2), 5px 10px 40px rgba(0,0,0,0.2);
+  position: relative;
+  left: 3%;
+}
+#col_left_inverse img.second {
+  left: 30%;
+}
+#col_left_inverse img.third {
+  left: 10%;
+}
+#col_left_inverse img.forty {
+  left: 30%;
+}
+#col_left_inverse img.fourth {
+  left: 25%;
+  margin-bottom: 10rem;
+}
+#col_left_inverse img.five {
+  left: 15%;
+  margin-top: 18%;
+  margin-bottom: 7%;
+}
+#col_left_inverse h1 {
+  color: #cad5d6;
+  font-size: 5.9vw;
+  max-width: 24%;
+  position: absolute;
+}
+#col_left_inverse h1.right {
+  padding-left: 35%;
+  padding-top: 69%;
+}
+@media screen and (min-width: 600px) {
+  .wrapper {
+    margin: auto;
+    display: table;
+    direction: rtl;
+  }
+  .wrapper div {
+    direction: ltr;
+  }
+  .content {
+    display: table-cell;
+    background: #add;
+  }
+  .side {
+    display: table-cell;
+    background: #aad;
+  }
+}
